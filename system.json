@@ -16,12 +16,12 @@
   ],
   "documentTypes": {
     "Actor": {
-      "porter": { "htmlFields": ["description"] },
-      "metrdotel": { "htmlFields": ["description"] },
-      "housemaid": { "htmlFields": ["description"] },
-      "chef": { "htmlFields": ["description"] },
-      "guest": { "htmlFields": ["description"] },
-      "hotel": { "htmlFields": ["description"] }
+      "porter": { "htmlFields": ["description", "notes"] },
+      "metrdotel": { "htmlFields": ["description", "notes"] },
+      "housemaid": { "htmlFields": ["description", "notes"] },
+      "chef": { "htmlFields": ["description", "notes"] },
+      "guest": { "htmlFields": ["description", "notes"] },
+      "hotel": { "htmlFields": ["description", "notes"] }
     },
     "Item": {
       "move": { "htmlFields": ["description", "examples", "results.on_10", "results.on_79", "results.on_6"] }

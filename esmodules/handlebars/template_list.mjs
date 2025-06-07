@@ -5,7 +5,9 @@ export const TemplatesList = {
     'ActorSheets': [
         'sheets/actors/hero-sheet.hbs',
         'sheets/actors/guest-sheet.hbs',
-        'sheets/actors/hotel-sheet.hbs'
+        'sheets/actors/hotel-sheet.hbs',
+        'sheets/actors/notes-tab-sheet.hbs',
+        'sheets/actors/moves-list-sheet.hbs'
     ],
     'ItemSheets': [
         'sheets/items/move-sheet.hbs',
