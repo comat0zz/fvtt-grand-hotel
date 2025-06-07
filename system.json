@@ -1,0 +1,65 @@
+{
+  "id": "grand-hotel",
+  "title": "Grand Hotel",
+  "description": "Болванка наработок под проекты разработки",
+  "version": "0.3.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Nikita Belov",
+      "email": "comAT0Zz@gmail.com",
+      "flags": {}
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "porter": { "htmlFields": ["description"] },
+      "metrdotel": { "htmlFields": ["description"] },
+      "housemaid": { "htmlFields": ["description"] },
+      "chef": { "htmlFields": ["description"] },
+      "guest": { "htmlFields": ["description"] },
+      "hotel": { "htmlFields": ["description"] }
+    },
+    "Item": {
+      "move": { "htmlFields": ["description", "examples", "results.on_10", "results.on_79", "results.on_6"] }
+    }
+  },
+  "esmodules": [
+    "esmodules/system.mjs"
+  ],
+  "styles": [
+    "styles/system.css"
+  ],
+  "packs": [
+    {
+      "name": "moves",
+      "label": "Ходы",
+      "system": "grand-hotel",
+      "path": "packs/moves",
+      "type": "Item",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "lang/ru.json",
+      "flags": {}
+    }
+  ],
+  "socket": true,
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "url": "https://github.com/comat0zz/fvtt-grand-hotel",
+  "manifest": "https://github.com/comat0zz/fvtt-grand-hotel/releases/latest/download/system.json",
+  "download": "https://github.com/comat0zz/fvtt-grand-hotel/releases/latest/download/grand-hotel.zip"
+}

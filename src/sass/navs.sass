@@ -1,0 +1,26 @@
+form.sheet
+  nav.tabs
+    border: none
+    color: #000
+    font-family: 'Myriad-Pro'
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    width: 100%
+    gap: 0
+
+    a
+      display: flex
+      flex-direction: column
+      flex-basis: 100%
+      flex: 1
+
+
+    [data-tab], [data-tab].active
+      color: #000
+
+    [data-tab].active, [data-tab]:hover
+      text-shadow: unset
+      font-weight: bold
+      border: 1px solid #000
+      border-radius: 0% 0% 50% 50%

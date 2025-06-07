@@ -1,0 +1,118 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Fachada-Regular";
+  font-weight: normal;
+  font-style: normal;
+  src: local("Fachada-Regular"), url("./fonts/Fachada-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Myriad-Pro-Light SemiCondensed";
+  font-weight: normal;
+  font-style: normal;
+  src: local("Myriad-Pro-Light SemiCondensed"), url("./fonts/Myriad-Pro-Light SemiCondensed.otf") format("opentype");
+}
+@font-face {
+  font-family: "Myriad-Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: local("Myriad-Pro"), url("./fonts/Myriad-Pro.ttf") format("truetype");
+}
+.czt-wrapper .czt-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.czt-wrapper .czt-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+form.sheet.grand-hotel {
+  background: unset;
+  backdrop-filter: unset;
+  -webkit-backdrop-filter: unset;
+  background-color: #fff;
+  font-family: "Fachada-Regular";
+  color: #000;
+}
+form.sheet.grand-hotel section.window-content {
+  padding-top: 0;
+}
+form.sheet.grand-hotel input, form.sheet.grand-hotel select, form.sheet.grand-hotel select > option {
+  background: unset;
+  border: 0;
+  background-color: #fff;
+  font-size: var(--font-size-16);
+  box-shadow: unset;
+  border-radius: 0;
+}
+form.sheet.grand-hotel select option:hover, form.sheet.grand-hotel select option:checked {
+  background: #999 !important;
+}
+form.sheet.grand-hotel select[name="system.role"] {
+  margin-left: 5px;
+}
+form.sheet.grand-hotel input:focus, form.sheet.grand-hotel select:focus {
+  outline: none;
+}
+form.sheet.grand-hotel input[type=text], form.sheet.grand-hotel select {
+  border-bottom: 1px solid #000;
+}
+form.sheet.grand-hotel input[type=checkbox]:checked {
+  --checkbox-font-weight: unset;
+  --checkbox-background-color: #000;
+  --checkbox-checked-color: #fff;
+  --checkbox-checkmark-color: #000;
+}
+form.sheet.grand-hotel input[type=checkbox]::before {
+  content: "◇";
+}
+form.sheet.grand-hotel input[type=checkbox]:checked::before {
+  content: "◈";
+}
+form.sheet.grand-hotel .move-grey {
+  font-family: "Myriad-Pro-Light SemiCondensed";
+}
+form.sheet.grand-hotel .move-types {
+  line-height: 2em;
+}
+form.sheet.grand-hotel .move-caption {
+  font-weight: bold;
+}
+form.sheet.grand-hotel prose-mirror[name="system.examples"] {
+  min-height: 600px;
+}
+form.sheet.grand-hotel .result-caption {
+  font-weight: bold;
+  font-size: var(--font-size-20);
+}
+
+form.sheet nav.tabs {
+  border: none;
+  color: #000;
+  font-family: "Myriad-Pro";
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0;
+}
+form.sheet nav.tabs a {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+form.sheet nav.tabs [data-tab], form.sheet nav.tabs [data-tab].active {
+  color: #000;
+}
+form.sheet nav.tabs [data-tab].active, form.sheet nav.tabs [data-tab]:hover {
+  text-shadow: unset;
+  font-weight: bold;
+  border: 1px solid #000;
+  border-radius: 0% 0% 50% 50%;
+}

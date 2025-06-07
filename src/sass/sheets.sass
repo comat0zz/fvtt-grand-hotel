@@ -1,0 +1,60 @@
+form.sheet.grand-hotel
+  background: unset
+  backdrop-filter: unset
+  -webkit-backdrop-filter: unset
+  background-color: #fff
+  font-family: 'Fachada-Regular'
+  color: #000
+
+  section.window-content
+    padding-top: 0
+
+  input, select, select > option
+    background: unset
+    border: 0
+    background-color: #fff
+    font-size: var(--font-size-16)
+    box-shadow: unset
+    border-radius: 0
+
+  select 
+    option:hover, option:checked 
+      background: #999 !important
+
+  select[name="system.role"]
+    margin-left: 5px
+
+  input:focus, select:focus
+    outline: none
+
+  input[type=text], select
+    border-bottom: 1px solid #000
+  
+  input[type=checkbox]:checked
+    --checkbox-font-weight: unset
+    --checkbox-background-color: #000
+    --checkbox-checked-color: #fff
+    --checkbox-checkmark-color: #000
+  
+  input[type="checkbox"]::before
+    content: "\25C7";
+
+  input[type="checkbox"]:checked::before
+    content: "\25C8";
+  
+
+  .move-grey
+    font-family: 'Myriad-Pro-Light SemiCondensed'
+
+  .move-types
+    line-height: 2em
+
+  .move-caption
+    font-weight: bold
+
+  prose-mirror[name="system.examples"]
+    min-height: 600px
+  
+  .result-caption 
+    font-weight: bold
+    font-size: var(--font-size-20)
