@@ -6,6 +6,7 @@ export default class CztGuest extends foundry.abstract.TypeDataModel {
         const schema = {};
 
         schema.description = new fields.HTMLField({ required: true, textSearch: true });
+        schema.notes = new fields.HTMLField({ required: true, textSearch: true });
 
         return schema;
     }
