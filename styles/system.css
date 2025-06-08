@@ -118,6 +118,5 @@ form.sheet nav.tabs [data-tab].active, form.sheet nav.tabs [data-tab]:hover {
 }
 
 body.system-grand-hotel {
-background-image: url("../assets/sp.jpg")
+  background-image: url("../assets/sp.png");
 }
-  
