@@ -8,49 +8,49 @@
       <input type="text" name="name" value="{{actor.name}}" />
     </div>
   </div>
-  <div class="czt-row">
-    <div class="czt-column">
-      картинка
+  <div class="guest-sides">
+    <div class="guest-side-left">
+      <img src="{{actor.img}}" data-edit="img" data-action="editImage" />
     </div>
-    <div class="czt-column">
+    <div class="guest-side-right">
 
       <div class="czt-row">
-        <div class="czt-column"><b>{{localize "CZT.Guest.Description"}}</b></div>
+        <div class="czt-column guest-info"><b>{{localize "CZT.Guest.Description"}}</b> &mdash; {{localize "CZT.Guest.DescriptionMore"}}</div>
       </div>
       <div class="czt-row">
         <div class="czt-column">
-
+          {{formInput systemFields.description value=system.description}}
         </div>
       </div>
 
       <div class="czt-row">
-        <div class="czt-column">{{localize "CZT.Guest.isGM"}}&#42889;</div>
+        <div class="czt-column">&darr; {{localize "CZT.Guest.isGM"}}&#42889; &darr; </div>
       </div>
 
       <div class="czt-row">
-        <div class="czt-column"><b>{{localize "CZT.Guest.Nuance"}}</b></div>
+        <div class="czt-column guest-info"><b>{{localize "CZT.Guest.Nuance"}}</b> &mdash; {{localize "CZT.Guest.NuanceMore"}}</div>
       </div>
       <div class="czt-row">
         <div class="czt-column">
-
+          {{formInput systemFields.nuance value=system.nuance}}
         </div>
       </div>
 
       <div class="czt-row">
-        <div class="czt-column"><b>{{localize "CZT.Guest.Problem"}}</b></div>
+        <div class="czt-column guest-info"><b>{{localize "CZT.Guest.Problem"}}</b> &mdash; {{localize "CZT.Guest.ProblemMore"}}</div>
       </div>
       <div class="czt-row">
         <div class="czt-column">
-
+          {{formInput systemFields.problem value=system.problem}}
         </div>
       </div>
 
       <div class="czt-row">
-        <div class="czt-column"><b>{{localize "CZT.Guest.Secret"}}</b></div>
+        <div class="czt-column guest-info"><b>{{localize "CZT.Guest.Secret"}}</b> &mdash; {{localize "CZT.Guest.SecretMore"}}</div>
       </div>
       <div class="czt-row">
         <div class="czt-column">
-
+          {{formInput systemFields.secret value=system.secret}}
         </div>
       </div>
 

@@ -8,7 +8,6 @@ import { SYSTEM } from "../configs/system.mjs";
 export default class CztHotel extends Actor {
 
   constructor(data = {}) {
-    console.log("AAAAA", data)
     if (!data.img) {
       data.img = `${SYSTEM.assets_path}/hotel-logo.png`;
     }

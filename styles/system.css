@@ -103,6 +103,7 @@ form.sheet nav.tabs {
   flex-wrap: wrap;
   width: 100%;
   gap: 0;
+  margin-bottom: 5px;
 }
 form.sheet nav.tabs a {
   display: flex;
@@ -196,4 +197,25 @@ form.grand-hotel.hotel .hotel-leCadres-caption {
 form.grand-hotel.hotel .hotel-EmployeesEmpty {
   text-align: center;
   font-size: var(--font-size-18);
+}
+
+form.grand-hotel.guest prose-mirror {
+  height: 500px;
+}
+form.grand-hotel.guest .guest-info {
+  display: inline;
+}
+form.grand-hotel.guest .guest-sides {
+  width: 100%;
+}
+form.grand-hotel.guest .guest-sides .guest-side-left {
+  width: 20%;
+  float: left;
+}
+form.grand-hotel.guest .guest-sides .guest-side-left img {
+  height: 100%;
+}
+form.grand-hotel.guest .guest-sides .guest-side-right {
+  width: 80%;
+  float: left;
 }

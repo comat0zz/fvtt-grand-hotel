@@ -25,7 +25,7 @@ export default class CztGuestSheet extends api.HandlebarsApplicationMixin(sheets
     static DEFAULT_OPTIONS = {
         tag: "form",
         position: {
-            width: 580,
+            width: 800,
             height: "auto",
         },
         classes: [ SYSTEM.id, "sheet", "guest" ],
@@ -90,7 +90,6 @@ export default class CztGuestSheet extends api.HandlebarsApplicationMixin(sheets
           actor: this.document,
           system: this.document.system,
           source: this.document.toObject(),
-          enrichedDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
           enrichedNotes: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.notes, { async: true }),
           isEditMode: this.isEditMode,
           isPlayMode: this.isPlayMode,

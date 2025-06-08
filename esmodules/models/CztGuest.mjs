@@ -5,8 +5,12 @@ export default class CztGuest extends foundry.abstract.TypeDataModel {
         const requiredInteger = { required: true, nullable: false, integer: true };
         const schema = {};
 
-        schema.description = new fields.HTMLField({ required: true, textSearch: true });
+        schema.description = new fields.StringField({ required: false, nullable: false, initial: "" });
         schema.notes = new fields.HTMLField({ required: true, textSearch: true });
+
+        schema.nuance = new fields.StringField({ required: false, nullable: false, initial: "" });
+        schema.problem = new fields.StringField({ required: false, nullable: false, initial: "" });
+        schema.secret  = new fields.StringField({ required: false, nullable: false, initial: "" });
 
         return schema;
     }

@@ -20,7 +20,7 @@
       "metrdotel": { "htmlFields": ["description", "notes"] },
       "housemaid": { "htmlFields": ["description", "notes"] },
       "chef": { "htmlFields": ["description", "notes"] },
-      "guest": { "htmlFields": ["description", "notes"] },
+      "guest": { "htmlFields": ["notes"] },
       "hotel": { "htmlFields": ["description", "notes"] }
     },
     "Item": {
@@ -53,6 +53,19 @@
       "system": "grand-hotel",
       "path": "packs/helpers",
       "type": "JournalEntry",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "guests",
+      "label": "Особые гости",
+      "system": "grand-hotel",
+      "path": "packs/guests",
+      "type": "Actor",
       "private": false,
       "flags": {},
       "ownership": {
