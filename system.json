@@ -1,8 +1,8 @@
 {
   "id": "grand-hotel",
   "title": "Grand Hotel",
-  "description": "Болванка наработок под проекты разработки",
-  "version": "0.3.0",
+  "description": "Это игра про один безумный день из жизни les cadres, обслуживающего персонала элитного Отеля. Это игра о командном духе, решительности, преданности друг другу и своей униформе.",
+  "version": "1.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -40,6 +40,19 @@
       "system": "grand-hotel",
       "path": "packs/moves",
       "type": "Item",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "helpers",
+      "label": "Энцилопедия",
+      "system": "grand-hotel",
+      "path": "packs/helpers",
+      "type": "JournalEntry",
       "private": false,
       "flags": {},
       "ownership": {

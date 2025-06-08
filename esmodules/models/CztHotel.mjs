@@ -8,6 +8,8 @@ export default class CztHotel extends foundry.abstract.TypeDataModel {
         schema.description = new fields.HTMLField({ required: true, textSearch: true });
         schema.notes = new fields.HTMLField({ required: true, textSearch: true });
 
+        
+
         return schema;
     }
 
