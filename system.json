@@ -49,7 +49,7 @@
     },
     {
       "name": "helpers",
-      "label": "Энцилопедия",
+      "label": "Энциклопедия",
       "system": "grand-hotel",
       "path": "packs/helpers",
       "type": "JournalEntry",
