@@ -69,6 +69,18 @@
       "flags": {}
     }
   ],
+  "media": [
+    {
+      "type": "cover",
+      "loop": false,
+      "flags": {}
+    },
+    {
+      "type": "setup",
+      "url": "systems/grand-hotel/assets/cover.png",
+      "thumbnail": "systems/grand-hotel/assets/cover.png"
+    }
+  ],
   "socket": true,
   "gridDistance": 1,
   "gridUnits": "m",
