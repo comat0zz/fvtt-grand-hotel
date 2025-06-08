@@ -1,7 +1,150 @@
 <section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
 <div class="czt-wrapper">
+
   <div class="czt-row">
-    <div class="czt-column"></div>
+    <div class="czt-column hotel-wtf">{{localize "CZT.Hotel.WTF"}}</div>
   </div>
+  
+  <div class="czt-row">
+    <div class="czt-column">
+      <img src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{localize "CZT.Hotel.Logo"}}" class="hotel-logo" />
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Name"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      <input type="text" name="name" value="{{actor.name}}" />
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.NameL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.namel value=system.namel}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Terra"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.terra value=system.terra}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.TerraL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.terral value=system.terral}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Age"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.age value=system.age}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.AgeL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.agel value=system.agel}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Floor"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.floor value=system.floor}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.FloorL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.floorl value=system.floorl}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Room"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.room value=system.room}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.RoomL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.rooml value=system.rooml}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Ladder"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.ladder value=system.ladder}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.LadderL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.ladderl value=system.ladderl}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Basement"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.basement value=system.basement}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.BasementL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.basementl value=system.basementl}}
+    </div>
+  </div>
+
+  <div class="czt-row">
+    <div class="czt-column hotel-caption">{{localize "CZT.Hotel.Employee"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.employee value=system.employee}}
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column hotel-caption-l">{{localize "CZT.Hotel.EmployeeL"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      {{formInput systemFields.employeel value=system.employeel}}
+    </div>
+  </div>
+
 </div>
 </section>

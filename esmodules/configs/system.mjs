@@ -16,3 +16,11 @@ export const SYSTEM = {
 * Define the set of special ability types
 * @type {Object}
 */
+
+
+export const ActorTypes = [
+    "porter",
+    "metrdotel",
+    "chef",
+    "housemaid"
+]

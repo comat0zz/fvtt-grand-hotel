@@ -1,0 +1,26 @@
+<section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<div class="czt-wrapper">
+  <div class="czt-row hotel-crisis">
+    <div class="czt-column">
+      <input type="checkbox" data-num="1" {{#iflteq 1 system.crisis}}checked="checked"{{/iflteq}} class="crisis-check crisis-chk-1" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="2" {{#iflteq 2 system.crisis}}checked="checked"{{/iflteq}} class="crisis-check crisis-chk-2" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="3" {{#iflteq 3 system.crisis}}checked="checked"{{/iflteq}} class="crisis-check crisis-chk-3" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="4" {{#iflteq 4 system.crisis}}checked="checked"{{/iflteq}} class="crisis-check crisis-chk-4" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="5" {{#iflteq 5 system.crisis}}checked="checked"{{/iflteq}} class="crisis-check crisis-chk-5" />
+    </div>
+  </div>
+
+
+  <div class="czt-row">
+    <div class="czt-column">{{localize "CZT.Hotel.CrisisL"}}</div>
+  </div>
+</div>
+</section>

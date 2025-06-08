@@ -3,8 +3,12 @@
  * @extends {Actor}
  */
 export default class CztActor extends Actor {
-  /*  
-  _onUpdate(changed, options, userId) { 
-      return super._onUpdate(changed, options, userId)
-    } */
+  
+  constructor(data = {}, context) {
+      if (!data.img && data.type == 'hotel') {
+        data.img = `${SYSTEM.assets_path}/hotel-logo.png`;
+      }
+      super(data, context);
+    }
+
   };

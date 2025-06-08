@@ -80,8 +80,11 @@ form.sheet.grand-hotel .move-grey {
 form.sheet.grand-hotel .move-types {
   line-height: 2em;
 }
-form.sheet.grand-hotel .move-caption {
+form.sheet.grand-hotel .move-caption, form.sheet.grand-hotel .hotel-caption {
   font-weight: bold;
+}
+form.sheet.grand-hotel .hotel-caption-l {
+  font-style: italic;
 }
 form.sheet.grand-hotel prose-mirror[name="system.examples"] {
   min-height: 600px;
@@ -118,5 +121,79 @@ form.sheet nav.tabs [data-tab].active, form.sheet nav.tabs [data-tab]:hover {
 }
 
 body.system-grand-hotel {
-  background-image: url("../assets/sp.png");
+  background: url("../assets/sp.png") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.window-content {
+  overflow-y: auto;
+}
+
+form.grand-hotel.hotel .hotel-logo {
+  height: 400px;
+}
+form.grand-hotel.hotel .hotel-wtf {
+  font-weight: bold;
+  font-size: var(--font-size-20);
+  font-family: "Myriad-Pro-Light SemiCondensed";
+  text-align: center;
+}
+form.grand-hotel.hotel prose-mirror {
+  height: 600px;
+}
+form.grand-hotel.hotel .hotel-crisis {
+  background: url("../assets/crisis-bg.png") no-repeat;
+  background-size: 100% 100%;
+  height: 207px;
+}
+form.grand-hotel.hotel .hotel-crisis input {
+  background: unset;
+  --checkbox-background-color: #000;
+}
+form.grand-hotel.hotel .hotel-crisis .crisis-check {
+  --checkbox-size: var(--font-size-32);
+}
+form.grand-hotel.hotel .hotel-crisis .crisis-chk-1 {
+  padding-top: 113px;
+  padding-left: 25px;
+}
+form.grand-hotel.hotel .hotel-crisis .crisis-chk-2 {
+  padding-top: 112px;
+  padding-left: 28px;
+}
+form.grand-hotel.hotel .hotel-crisis .crisis-chk-3 {
+  padding-top: 107px;
+  padding-left: 24px;
+  --checkbox-size: var(--font-size-36);
+}
+form.grand-hotel.hotel .hotel-crisis .crisis-chk-4 {
+  padding-top: 96px;
+  padding-left: 17px;
+  --checkbox-size: var(--font-size-48);
+}
+form.grand-hotel.hotel .hotel-crisis .crisis-chk-5 {
+  padding-top: 83px;
+  padding-left: 13px;
+  --checkbox-size: var(--font-size-64);
+}
+form.grand-hotel.hotel .hotel-button-add {
+  padding: 8px 8px 0px 50px;
+}
+form.grand-hotel.hotel .hotel-AddEmp, form.grand-hotel.hotel .hotel-LunchBreak, form.grand-hotel.hotel .hotel-DelEmp, form.grand-hotel.hotel .hotel-isDebug {
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 8%;
+}
+form.grand-hotel.hotel .hotel-leCadres {
+  text-align: center;
+}
+form.grand-hotel.hotel .hotel-leCadres-caption {
+  text-align: center;
+  font-size: var(--font-size-24);
+  font-weight: bold;
+}
+form.grand-hotel.hotel .hotel-EmployeesEmpty {
+  text-align: center;
+  font-size: var(--font-size-18);
 }

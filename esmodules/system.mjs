@@ -1,4 +1,4 @@
-import { SYSTEM } from "./configs/system.mjs";
+import { SYSTEM, ActorTypes } from "./configs/system.mjs";
 globalThis.SYSTEM = SYSTEM; // Expose the SYSTEM object to the global scope
 
 import { registerSystemSettings } from "./configs/settings.mjs";
@@ -44,7 +44,7 @@ Hooks.once("init", async function() {
 
   foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
   foundry.documents.collections.Actors.registerSheet(SYSTEM.id, applications.CztActorSheet, { 
-    types: ["porter", "metrdotel", "chef", "housemaid"], 
+    types: ActorTypes, 
     makeDefault: true
   });
 

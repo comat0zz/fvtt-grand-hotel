@@ -1,9 +1,80 @@
 <section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
 <div class="czt-wrapper">
+
+  {{#iflt leCadresCount 4}}
+    {{#ife employeesCount 0}}
+      {{#iflt leCadresCount 4}}
+      <div class="czt-row">
+        <div class="czt-column hotel-EmployeesEmpty">{{localize "CZT.Hotel.EmployeesEmpty"}}</div>
+      </div>
+      {{/iflt}}
+    {{else}}
+      <div class="czt-row">
+        <div class="czt-column">
+          <select class="hotel-employees">
+            {{#each employees as |employe|}}
+              <option value="{{employe._id}}">{{employe.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="czt-column hotel-button-add"><input type="button" value="{{localize "CZT.Hotel.AddEmp"}}" class="hotel-AddEmp" /></div>
+      </div>
+    {{/ife}}
+  {{else}}
+  <div class="czt-row">
+    <div class="czt-column">{{localize "CZT.Hotel.AddEmpNo"}}</div>
+  </div>
+  {{/iflt}}
+
+  {{#ifgt leCadresCount 0}}
+  <div class="czt-row">
+    <div class="czt-column hotel-leCadres-caption">{{localize "CZT.Hotel.Employees"}}</div>
+  </div>
+  <div class="czt-row hotel-leCadres">
+    {{#each leCadres as |leCadre|}}
+      <div class="czt-column">
+          <div class="czt-row">
+            <div class="czt-column">{{lzCc "TYPES.Actor." leCadre.type}}</div>
+          </div>
+          <div class="czt-row">
+            <div class="czt-column">{{leCadre.name}}</div>
+          </div>
+          <div class="czt-row">
+            <div class="czt-column"><img src="{{leCadre.img}}"></div>
+          </div>
+          <div class="czt-row">
+            <div class="czt-column">список их тегов для мастера</div>
+          </div>
+          <div class="czt-row">
+            <div class="czt-column">ор</div>
+          </div>
+          <div class="czt-row">
+            <div class="czt-column"><input type="button" data-num="{{leCadre._id}}" value="{{localize "CZT.Hotel.DelEmp"}}" class="hotel-DelEmp" /></div>
+          </div>
+      </div>
+    {{/each}}
+  </div>
+
+
   <div class="czt-row">
     <div class="czt-column">
-      список сотрудников и заметок к ним
+      {{localize "CZT.Hotel.LunchBreakL"}}
     </div>
   </div>
+  <div class="czt-row">
+    <div class="czt-column">
+      <input type="button" value="{{localize "CZT.Hotel.LunchBreak"}}" class="hotel-LunchBreak" />
+    </div>
+  </div>
+  {{/ifgt}}
+
+  {{#if isDebug}}
+    <div class="czt-row">
+    <div class="czt-column">
+      <input type="button" value="{{localize "CZT.Hotel.isDebug"}}" class="hotel-isDebug" />
+    </div>
+  </div>
+  {{/if}}
+
 </div>
 </section>

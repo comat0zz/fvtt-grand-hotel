@@ -8,7 +8,8 @@ export const TemplatesList = {
         'sheets/actors/hotel-sheet.hbs',
         'sheets/actors/notes-tab-sheet.hbs',
         'sheets/actors/moves-list-sheet.hbs',
-        'sheets/actors/hotel-employees-sheet.hbs'
+        'sheets/actors/hotel-employees-sheet.hbs',
+        'sheets/actors/hotel-crisis-sheet.hbs'
     ],
     'ItemSheets': [
         'sheets/items/move-sheet.hbs',
