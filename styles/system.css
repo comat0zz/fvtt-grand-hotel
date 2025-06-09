@@ -42,7 +42,10 @@ form.sheet.grand-hotel {
 form.sheet.grand-hotel section.window-content {
   padding-top: 0;
 }
-form.sheet.grand-hotel input, form.sheet.grand-hotel select, form.sheet.grand-hotel select > option {
+form.sheet.grand-hotel textarea {
+  color: #000;
+}
+form.sheet.grand-hotel input, form.sheet.grand-hotel select, form.sheet.grand-hotel select > option, form.sheet.grand-hotel textarea {
   background: unset;
   border: 0;
   background-color: #fff;
@@ -56,10 +59,10 @@ form.sheet.grand-hotel select option:hover, form.sheet.grand-hotel select option
 form.sheet.grand-hotel select[name="system.role"] {
   margin-left: 5px;
 }
-form.sheet.grand-hotel input:focus, form.sheet.grand-hotel select:focus {
+form.sheet.grand-hotel input:focus, form.sheet.grand-hotel select:focus, form.sheet.grand-hotel textarea {
   outline: none;
 }
-form.sheet.grand-hotel input[type=text], form.sheet.grand-hotel select {
+form.sheet.grand-hotel input[type=text], form.sheet.grand-hotel select, form.sheet.grand-hotel textarea {
   border-bottom: 1px solid #000;
 }
 form.sheet.grand-hotel input[type=checkbox]:checked {
