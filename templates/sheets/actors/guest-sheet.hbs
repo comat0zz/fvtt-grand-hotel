@@ -22,7 +22,7 @@
           <textarea name="system.description">{{system.description}}</textarea>
         </div>
       </div>
-
+    {{#isGM}}
       <div class="czt-row">
         <div class="czt-column">&darr; {{localize "CZT.Guest.isGM"}}&#42889; &darr; </div>
       </div>
@@ -53,7 +53,7 @@
           <textarea name="system.secret">{{system.secret}}</textarea>
         </div>
       </div>
-
+    {{/isGM}}
     </div>
   </div>
 </div>
