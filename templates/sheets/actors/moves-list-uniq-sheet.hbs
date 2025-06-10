@@ -1,9 +1,9 @@
 <section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
 <div class="czt-wrapper tab-move-list">
 
-  {{#each moveBase as |move|}}
+  {{#each moveUniq as |move|}}
   <!-- start move -->
-  <div class="czt-row move-item">
+  <div class="czt-row move-item" data-moveId="{{move.id}}" >
     <div class="czt-column">
       <div class="czt-row">
         <div class="czt-column move-caption">{{move.system.grey}}:</div>

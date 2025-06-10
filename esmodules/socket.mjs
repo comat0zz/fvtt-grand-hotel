@@ -1,4 +1,4 @@
-
+// https://foundryvtt.wiki/en/development/api/sockets
 /**
  * Handles socket events based on the provided action.
  *

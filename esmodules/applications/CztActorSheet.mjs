@@ -3,7 +3,7 @@
  * @extends {CztActorSheet}
  */
 
-import { SYSTEM } from "../configs/system.mjs";
+import { SYSTEM, ActorTypes } from "../configs/system.mjs";
 import * as CztUtility from "../utilities/_module.mjs";
 const { api, sheets } = foundry.applications;
 
@@ -69,7 +69,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             template: `${SYSTEM.template_path}/sheets/actors/hero-sheet.hbs`
         },
         moves: {
-            template: `${SYSTEM.template_path}/sheets/actors/moves-list-sheet.hbs`
+            template: `${SYSTEM.template_path}/sheets/actors/moves-list-uniq-sheet.hbs`
         },
         moveslist: {
             template: `${SYSTEM.template_path}/sheets/actors/moves-list-sheet.hbs`
@@ -96,7 +96,6 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
           actor: this.document,
           system: this.document.system,
           source: this.document.toObject(),
-          enrichedDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
           enrichedNotes: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.notes, { async: true }),
           isEditMode: this.isEditMode,
           isPlayMode: this.isPlayMode,
@@ -133,7 +132,12 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 }
             }
         }
-        
+
+        const moves = await game.packs.get(`${SYSTEM.id}.moves`).getDocuments();
+        context.moveUniq = await moves.filter(e => e.system.types === "uniq" && e.system.role === this.document.type);
+        context.moveBase = await moves.filter(e => e.system.types === "base");
+
+       
 
         game.logger.log(context)
         return context

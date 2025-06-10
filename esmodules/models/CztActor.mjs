@@ -18,7 +18,7 @@ export default class CztActor extends foundry.abstract.TypeDataModel {
         });
 
         // Связь с чарником отеля.
-        schema.grand_otel = new fields.StringField({ required: false, nullable: false, initial: "" });
+        schema.grand_hotel = new fields.StringField({ required: false, nullable: false, initial: "" });
 
         schema.quotes = new fields.StringField({ required: false, nullable: false, initial: "" });
 

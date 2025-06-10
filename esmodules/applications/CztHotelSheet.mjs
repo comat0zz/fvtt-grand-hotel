@@ -142,7 +142,8 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             }
         }
 
-
+        const moves = await game.packs.get(`${SYSTEM.id}.moves`).getDocuments();
+        context.moveSpecial = await moves.filter(e => e.system.types === "special");
 
         game.logger.log(context)
         return context

@@ -113,8 +113,7 @@ export default class CztGuestSheet extends api.HandlebarsApplicationMixin(sheets
             }
         }
 
-
-
+        
         game.logger.log(context)
         return context
     }
