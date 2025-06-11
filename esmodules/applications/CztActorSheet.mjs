@@ -173,15 +173,37 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             {
                 name: game.i18n.localize("CZT.Rolls.Simple"),
                 icon: '',
+                condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
                     const moveId = $(element).data("moveId");
+                    this._rollDicesSimple(moveId);
                 }
             },
             {
                 name: game.i18n.localize("CZT.Rolls.Advance"),
                 icon: '',
+                condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
                     const moveId = $(element).data("moveId");
+                    this._rollDicesAdvance(moveId);
+                }
+            },
+            {
+                name: game.i18n.localize("CZT.Moves.Disable"),
+                icon: '',
+                condition: (el) => (el.dataset.type == 'uniq'),
+                callback: element => {
+                    const moveId = $(element).data("moveId");
+                    this._moveDisable(moveId);
+                }
+            },
+            {
+                name: game.i18n.localize("CZT.Moves.Enable"),
+                icon: '',
+                condition: (el) => (el.dataset.type == 'uniq'),
+                callback: element => {
+                    const moveId = $(element).data("moveId");
+                    this._moveEnable(moveId);
                 }
             },
             {
@@ -189,7 +211,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 icon: '',
                 callback: element => {
                     const moveId = $(element).data("moveId");
-                    
+                    this._showExamples(moveId);
                 }
             }
         ];
@@ -208,12 +230,26 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         }
       return context;
     }
+    
+    _showExamples(moveId) {
 
-    async _onMoveCtxMenu(event, target) {
-        event.preventDefault();
+    }
 
-        
+    _moveDisable(moveId) {
+
+    }
+
+    _moveEnable(moveId) {
+
+    }
+
+    _rollDicesSimple(moveId) {
+
+    }
+
+    _rollDicesAdvance(moveId) {
         
     }
+
 
 }
