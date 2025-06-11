@@ -79,7 +79,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         }
     }
 
-    
+
     /* -------------------------------------------- */
 
     /** @override */
@@ -147,7 +147,53 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
     _onRender(context, options) {
         super._onRender((context, options))
 
+        
+       // const moveCtxMenu = 
+       // moveCtxMenu.forEach((d) => d.addEventListener("contextmenu", this._onMoveCtxMenu.bind(this)))
+        //this._createContextMenu(this._powerRollContextOptions, '.tab-move-list .move-item', {});
     }
+
+    /** @inheritdoc */
+    async _onFirstRender(context, options) {
+        await super._onFirstRender(context, options);
+
+        this._createContextMenu(this._moveListContextOptions, ".tab-move-list .move-item", {
+            hookName: "getMoveListContextOptions",
+            fixed: true,
+            parentClassHooks: false,
+        });
+    }
+
+    /**
+     * Context menu entries for power rolls
+     * @returns {ContextMenuEntry}
+     */
+    _moveListContextOptions() {
+        return [
+            {
+                name: game.i18n.localize("CZT.Rolls.Simple"),
+                icon: '',
+                callback: element => {
+                    const moveId = $(element).data("moveId");
+                }
+            },
+            {
+                name: game.i18n.localize("CZT.Rolls.Advance"),
+                icon: '',
+                callback: element => {
+                    const moveId = $(element).data("moveId");
+                }
+            },
+            {
+                name: game.i18n.localize("CZT.Moves.Navs.examples"),
+                icon: '',
+                callback: element => {
+                    const moveId = $(element).data("moveId");
+                    
+                }
+            }
+        ];
+    };
 
     /** @override */
     async _preparePartContext(partId, context) {
@@ -161,6 +207,13 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             default:
         }
       return context;
+    }
+
+    async _onMoveCtxMenu(event, target) {
+        event.preventDefault();
+
+        
+        
     }
 
 }

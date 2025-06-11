@@ -1,13 +1,34 @@
+$move_bottom: url('../assets/move-down.png')
 
+form.grand-hotel.actor
   .tab-move-list
+    p
+      margin: 0
+
+    .move-inline
+      display: inline
+
+    .czt-row
+      margin-bottom: 0;
 
     .move-item
+      background: $move_bottom no-repeat
+      background-position: bottom
+      padding-bottom: 20px
 
-      .move-caption
-
-      .move-grey
-
-      .move-desc
+      .move-pre-name
+        font-family: 'Myriad-Pro-Light SemiCondensed'
 
       .move-name
-      
+        font-size: var(--font-size-18)
+        font-weight: bold
+    
+    .move-item:last-child
+      background: unset
+    
+    .move-results
+      margin-top: 5px
+    
+    .move-res-caption
+      font-size: var(--font-size-16)
+      font-weight: bold
