@@ -134,6 +134,45 @@ body.system-grand-hotel {
   overflow-y: auto;
 }
 
+.ul-unstyle-list {
+  margin: 0;
+}
+
+nav#context-menu {
+  background: #fff;
+  color: #000;
+  font-family: "Fachada-Regular";
+}
+nav#context-menu .context-item:hover {
+  background: #dedfe4;
+}
+
+dialog.application.dialog, .chat-log, .chat-message {
+  background: #fff;
+  color: #000;
+  font-family: "Fachada-Regular";
+}
+dialog.application.dialog button, .chat-log button, .chat-message button {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+dialog.application.dialog button:focus, .chat-log button:focus, .chat-message button:focus {
+  outline: 1px solid #000;
+  box-shadow: 0 0 4px;
+}
+
+.chat-log {
+  background: rgba(0, 0, 0, 0);
+}
+
+.dice-tooltip .dice-rolls .roll {
+  line-height: 30px;
+}
+.dice-tooltip .part-header .part-total {
+  padding: 4px 8px 1px 7px;
+}
+
 form.grand-hotel.hotel .hotel-logo {
   height: 400px;
 }
@@ -253,4 +292,8 @@ form.grand-hotel.actor .tab-move-list .move-results {
 form.grand-hotel.actor .tab-move-list .move-res-caption {
   font-size: var(--font-size-16);
   font-weight: bold;
+}
+
+.show-move-examples {
+  width: 600px;
 }

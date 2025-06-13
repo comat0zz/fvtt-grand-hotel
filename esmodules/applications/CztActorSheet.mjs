@@ -175,7 +175,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 icon: '',
                 condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
-                    const moveId = $(element).data("moveId");
+                    const moveId = $(element).data("moveid");
                     this._rollDicesSimple(moveId);
                 }
             },
@@ -184,8 +184,8 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 icon: '',
                 condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
-                    const moveId = $(element).data("moveId");
-                    this._rollDicesAdvance(moveId);
+                    const moveId = $(element).data("moveid");
+                    this._rollDicesSimple(moveId, true);
                 }
             },
             {
@@ -193,7 +193,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 icon: '',
                 condition: (el) => (el.dataset.type == 'uniq'),
                 callback: element => {
-                    const moveId = $(element).data("moveId");
+                    const moveId = $(element).data("moveid");
                     this._moveDisable(moveId);
                 }
             },
@@ -202,15 +202,16 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 icon: '',
                 condition: (el) => (el.dataset.type == 'uniq'),
                 callback: element => {
-                    const moveId = $(element).data("moveId");
+                    const moveId = $(element).data("moveid");
                     this._moveEnable(moveId);
                 }
             },
             {
                 name: game.i18n.localize("CZT.Moves.Navs.examples"),
                 icon: '',
+                condition: (el) => (el.dataset.type == 'base'),
                 callback: element => {
-                    const moveId = $(element).data("moveId");
+                    const moveId = $(element).data("moveid");
                     this._showExamples(moveId);
                 }
             }
@@ -231,25 +232,122 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
       return context;
     }
     
-    _showExamples(moveId) {
+    async _showExamples(moveId) {
+        const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/items/move-examples.hbs`, {
+            content: move.system.examples
+        });
+
+        const title = game.i18n.localize("CZT.Moves.Example.Title");
+        const method = await foundry.applications.api.DialogV2.wait({
+            window: { 
+                title: `${title}: ${move.name}`
+            },
+            content: template,
+            classes: ['show-move-examples'],
+            buttons: [
+            {
+                label: game.i18n.localize("CZT.Moves.Example.Button"),
+                action: "Close",
+            }
+            ]
+        })
+    }
+
+    async _moveDisable(moveId) {
+        const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
 
     }
 
-    _moveDisable(moveId) {
-
+    async _moveEnable(moveId) {
+        const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
     }
 
-    _moveEnable(moveId) {
+    async _rollDicesSimple(moveId, isHelp = false) {
+        const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
+        let formula = '2d6';
+        if(isHelp) {formula = '3d6'};
 
+        // Бонус от положения на шкале
+        const move_op = move.system.op;
+        const actor_op = this.document.system.op;
+        const preBonus = Math.abs(move_op - actor_op);
+        let bonus = '+0';
+
+        switch(preBonus){
+            case 0: // в одной точке
+                bonus = "+2";
+                break;
+            case 1: // рядом
+                bonus = "+1";
+                break;
+            case 2: // через одно деление
+                bonus = "+0";
+                break;
+            case 3: // через два деления
+                bonus = "-1";
+                break;
+            case 4: // в разных концах
+                bonus = "-2";
+                break;
+            default:        
+        }
+
+        const finalFormula = `${formula}${bonus}`
+        const roll = await new Roll(finalFormula).evaluate();
+        const terms = roll.terms[0].results;
+        let total = roll.total;
+        let dice_1 = terms[0].result;
+        let dice_2 = terms[1].result;
+        let dice_3 = false;
+        if(isHelp) {
+            dice_3 = terms[2].result;
+            let arrValues = [dice_1, dice_2, dice_3];
+            let mm_num = Math.min.apply(null, arrValues);
+            let filteredNumbers = arrValues.filter((number) => number !== mm_num);
+            // может быть ситуация, когда выпало три одинаковых или два, 
+            // в итоге выше уберет больше одного, 
+            // а раз кубы убрало, значит надо дополнить, мы знаем какие - mm_num
+            while(filteredNumbers.length < 2) {
+                filteredNumbers.push(mm_num)
+            }
+            dice_1 = filteredNumbers[0];
+            dice_2 = filteredNumbers[1];
+            dice_3 = mm_num;
+
+            total = eval(dice_1 + dice_2 + bonus)
+        }
+        const total_dices = dice_1 + dice_2;
+
+
+
+        let move_res = "";
+        if(total >= 10){
+            move_res = move.system.results.on_10;
+        }else if(total >= 7 && total <= 9) {
+            move_res = move.system.results.on_79;
+        }else{
+            move_res = move.system.results.on_6;
+        }
+
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
+            finalFormula: finalFormula,
+            formula: formula,
+            total: total,
+            total_dices: total_dices,
+            move_name: move.name,
+            move_res: move_res,
+            dice_1: dice_1,
+            dice_2: dice_2,
+            dice_3: dice_3,
+            isHelp: isHelp
+        });
+
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            content: template
+        });
     }
-
-    _rollDicesSimple(moveId) {
-
-    }
-
-    _rollDicesAdvance(moveId) {
-        
-    }
-
 
 }

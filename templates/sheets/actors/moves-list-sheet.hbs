@@ -3,7 +3,7 @@
 
   {{#each moveBase as |move|}}
   <!-- start move -->
-  <div class="czt-row move-item" data-moveId="{{move.id}}" data-type="{{move.system.types}}">
+  <div class="czt-row move-item" data-moveid="{{move._id}}" data-type="{{move.system.types}}">
     <div class="czt-column">
       <div class="czt-row">
         <div class="czt-column move-name">{{move.name}}</div>
@@ -19,15 +19,32 @@
         <div class="czt-column">{{{move.system.results.on_10}}}</div>
       </div>
 
-      <div class="czt-row">
+      <div class="czt-row move-results">
         <div class="czt-column move-res-caption">{{localize "CZT.Moves.On"}} 7-9</div>
+        <div class="czt-column">
+          <ul class="ul-unstyle-list">
+            {{#if move.system.results.on_79_tag}}
+              <li>{{localize "CZT.Moves.SetTag"}}</li>
+            {{/if}}
+          </ul>
+        </div>
       </div>
       <div class="czt-row">
         <div class="czt-column">{{{move.system.results.on_79}}}</div>
       </div>
 
-      <div class="czt-row">
+      <div class="czt-row move-results">
         <div class="czt-column move-res-caption">{{localize "CZT.Moves.On"}} 6-</div>
+        <div class="czt-column">
+          <ul class="ul-unstyle-list">
+            {{#if move.system.results.on_6_tag}}
+              <li>{{localize "CZT.Moves.SetTag"}}</li>
+            {{/if}}
+            {{#if move.system.results.on_6_crisis}}
+              <li>{{localize "CZT.Moves.Options.crisis"}}</li>
+            {{/if}}
+          </ul>
+        </div>
       </div>
       <div class="czt-row">
         <div class="czt-column">{{{move.system.results.on_6}}}</div>

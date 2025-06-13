@@ -15,7 +15,8 @@ export const TemplatesList = {
         'sheets/items/move-sheet.hbs',
         'sheets/items/info-sheet.hbs',
         'sheets/items/results-sheet.hbs',
-        'sheets/items/examples-sheet.hbs'
+        'sheets/items/examples-sheet.hbs',
+        'sheets/items/move-examples.hbs'
     ],
     'Chats': [
         'chats/dices-roll.hbs'

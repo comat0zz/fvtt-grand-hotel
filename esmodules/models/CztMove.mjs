@@ -68,6 +68,8 @@ export default class CztMove extends foundry.abstract.TypeDataModel {
                 label: "CZT.Moves.Options.crisis"
             })
         });
+        
+        schema.op = new fields.NumberField({ ...requiredInteger, initial: 3, min: 1, max: 5 });
 
         schema.types = new fields.StringField({ required: false });
 
