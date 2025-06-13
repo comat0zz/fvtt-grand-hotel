@@ -65,6 +65,11 @@ form.sheet.grand-hotel input:focus, form.sheet.grand-hotel select:focus, form.sh
 form.sheet.grand-hotel input[type=text], form.sheet.grand-hotel select, form.sheet.grand-hotel textarea {
   border-bottom: 1px solid #000;
 }
+form.sheet.grand-hotel input[type=radio]:checked {
+  --checkbox-background-color: #000;
+  --checkbox-checked-color: #fff;
+  --checkbox-checkmark-color: #000;
+}
 form.sheet.grand-hotel input[type=checkbox]:checked {
   --checkbox-font-weight: unset;
   --checkbox-background-color: #000;
@@ -95,6 +100,105 @@ form.sheet.grand-hotel prose-mirror[name="system.examples"] {
 form.sheet.grand-hotel .result-caption {
   font-weight: bold;
   font-size: var(--font-size-20);
+}
+form.sheet.grand-hotel .actor-or-board {
+  background: url("../assets/board.png") no-repeat;
+  background-size: 100% 100%;
+  height: 237px;
+  text-align: center;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-top {
+  padding-top: 20px;
+}
+form.sheet.grand-hotel .actor-or-board .czt-column-no-flex {
+  display: inline;
+  float: left;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-top-1 {
+  width: 35%;
+  padding-left: 87px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-top-2 {
+  width: 20%;
+  padding-left: 42px;
+  padding-top: 10px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-top-3 {
+  width: 38%;
+  padding-left: 51px;
+  padding-right: 42px;
+  padding-top: 10px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle {
+  padding-top: 10px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-1 {
+  padding-left: 8px;
+  font-weight: bold;
+  font-size: var(--font-size-48);
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-2 {
+  padding-left: 49px;
+  padding-top: 16px;
+  width: 14%;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-3 {
+  padding-left: 12px;
+  width: 16%;
+  padding-top: 16px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-4 {
+  padding-left: 25px;
+  width: 20%;
+  padding-top: 16px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-5 {
+  padding-left: 44px;
+  width: 13%;
+  padding-top: 16px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-6 {
+  padding-left: 0px;
+  width: 19%;
+  padding-top: 16px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-middle .actor-board-middle-7 {
+  padding-left: 12px;
+  font-weight: bold;
+  font-size: var(--font-size-48);
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-bottom {
+  padding-top: 9px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-bottom .actor-board-bottom-1 {
+  padding-left: 67px;
+  width: 31%;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-bottom .actor-board-bottom-2 {
+  width: 33%;
+  padding-left: 26px;
+  padding-top: 5px;
+}
+form.sheet.grand-hotel .actor-or-board .actor-board-bottom .actor-board-bottom-3 {
+  width: 27%;
+  padding-left: 23px;
+}
+
+.actor-work {
+  line-height: 31px;
+}
+
+.actor-sides .czt-column-no-flex {
+  display: inline;
+  float: left;
+}
+.actor-sides .actor-side-left {
+  width: 30%;
+  text-align: center;
+  margin: auto;
+}
+.actor-sides .actor-side-right {
+  padding-right: 5px;
 }
 
 form.sheet nav.tabs {
@@ -270,6 +374,9 @@ form.grand-hotel.actor .tab-move-list .move-inline {
 }
 form.grand-hotel.actor .tab-move-list .czt-row {
   margin-bottom: 0;
+}
+form.grand-hotel.actor .tab-move-list .move-disable {
+  background-color: rgba(109, 107, 107, 0.5) !important;
 }
 form.grand-hotel.actor .tab-move-list .move-item {
   background: url("../assets/move-down.png") no-repeat;

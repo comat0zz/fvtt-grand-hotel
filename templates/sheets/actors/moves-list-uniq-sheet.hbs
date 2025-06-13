@@ -3,7 +3,7 @@
 
   {{#each moveUniq as |move|}}
   <!-- start move -->
-  <div class="czt-row move-item" data-moveid="{{move._id}}" data-type="{{move.system.types}}">
+  <div class="czt-row move-item{{#ifIn move._id ../system.moves_disabled}} move-disable{{/ifIn}}" data-moveid="{{move._id}}" data-type="{{move.system.types}}">
     <div class="czt-column">
       <div class="czt-row">
         <div class="czt-column move-pre-name">{{move.system.grey}}</div>

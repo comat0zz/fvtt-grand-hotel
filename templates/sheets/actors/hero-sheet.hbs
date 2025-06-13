@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="czt-row">
-        <div class="czt-column">
+        <div class="czt-column actor-work">
           {{localize "CZT.Actor.Work"}}
         </div>
         <div class="czt-column">
@@ -33,10 +33,10 @@
       </div>
 
   <div class="actor-sides">
-    <div class="actor-side-left">
+    <div class="actor-side-left czt-column-no-flex">
       <img src="{{actor.img}}" data-edit="img" data-action="editImage" />
     </div>
-    <div class="actor-side-right">
+    <div class="actor-side-right czt-column-no-flex">
       <div class="czt-row">
         <div class="czt-column">
           связи
@@ -50,10 +50,53 @@
     </div>
   </div>
 
-  <div class="czt-row">
-        <div class="czt-column">
-          шкала
+  <div class="czt-row actor-or-board">
+    <div class="czt-column">
+      <div class="czt-row actor-board-top">
+        <div class="czt-column-no-flex actor-board-top-1">
+          {{localize "CZT.Actor.JobDuties.top1"}}
+        </div>
+        <div class="czt-column-no-flex actor-board-top-2">
+          {{localize "CZT.Actor.JobDuties.top2"}}
+        </div>
+        <div class="czt-column-no-flex actor-board-top-3">
+          {{localize "CZT.Actor.JobDuties.top3"}}
         </div>
       </div>
+
+      <div class="czt-row actor-board-middle">
+        <div class="czt-column-no-flex actor-board-middle-1"><div>{{localize "CZT.Actor.ExpL"}}</div></div>
+        <div class="czt-column-no-flex actor-board-middle-2">
+          <input type="radio" name="system.op" value="1" data-num="1" {{#ife 1 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-1" />
+        </div>
+        <div class="czt-column-no-flex actor-board-middle-3">
+          <input type="radio" name="system.op" value="2" data-num="2" {{#ife 2 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-2" />
+        </div>
+        <div class="czt-column-no-flex actor-board-middle-4">
+          <input type="radio" name="system.op" value="3" data-num="3" {{#ife 3 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-3" />
+        </div>
+        <div class="czt-column-no-flex actor-board-middle-5">
+          <input type="radio" name="system.op" value="4" data-num="4" {{#ife 4 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-4" />
+        </div>
+        <div class="czt-column-no-flex actor-board-middle-6">
+          <input type="radio" name="system.op" value="5" data-num="5" {{#ife 5 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-5" />
+        </div>
+        <div class="czt-column-no-flex actor-board-middle-7"><div>{{localize "CZT.Actor.ZealL"}}</div></div>
+      </div>
+
+      <div class="czt-row actor-board-bottom">
+        <div class="czt-column-no-flex actor-board-bottom-1">
+          {{localize "CZT.Actor.JobDuties.down1"}}
+        </div>
+        <div class="czt-column-no-flex actor-board-bottom-2">
+          {{localize "CZT.Actor.JobDuties.down2"}}
+        </div>
+        <div class="czt-column-no-flex actor-board-bottom-3">
+          {{localize "CZT.Actor.JobDuties.down3"}}
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 </section>

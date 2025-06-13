@@ -189,16 +189,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 }
             },
             {
-                name: game.i18n.localize("CZT.Moves.Disable"),
-                icon: '',
-                condition: (el) => (el.dataset.type == 'uniq'),
-                callback: element => {
-                    const moveId = $(element).data("moveid");
-                    this._moveDisable(moveId);
-                }
-            },
-            {
-                name: game.i18n.localize("CZT.Moves.Enable"),
+                name: game.i18n.localize("CZT.Moves.EnableDisable"),
                 icon: '',
                 condition: (el) => (el.dataset.type == 'uniq'),
                 callback: element => {
@@ -254,13 +245,18 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         })
     }
 
-    async _moveDisable(moveId) {
-        const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
-
-    }
-
     async _moveEnable(moveId) {
         const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
+        let moves_disabled = foundry.utils.duplicate(this.document.system.moves_disabled);
+        
+        // Если выключаем и его нет в настройках
+        if(!moves_disabled.includes(moveId)) {
+            moves_disabled.push(moveId);
+        }else{
+            moves_disabled = CztUtility.delElementArray(moves_disabled, moveId);
+        }
+
+        this.actor.update({['system.moves_disabled']: moves_disabled});
     }
 
     async _rollDicesSimple(moveId, isHelp = false) {
@@ -318,8 +314,6 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             total = eval(dice_1 + dice_2 + bonus)
         }
         const total_dices = dice_1 + dice_2;
-
-
 
         let move_res = "";
         if(total >= 10){
