@@ -152,6 +152,9 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
     /** @override */
     _onRender(context, options) {
         super._onRender((context, options));
+
+        const genContacts = this.element.querySelectorAll(".actor-contacts-gen");
+        genContacts.forEach((d) => d.addEventListener("click", this._genContacts.bind(this)));
     }
 
     /** @inheritdoc */
@@ -165,6 +168,31 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         });
     }
 
+    async _genContacts(event, target) {
+        
+        const con = await game.packs.get(`${SYSTEM.id}.contacts`).getDocument("bPHbD4WulW9BJ0vt");
+        console.log(con)
+        const lines = con.collections.results._source;
+        const lines_len = lines.length;
+        let contacts = foundry.utils.duplicate(this.document.system.contacts);
+        
+        if(contacts.pl1 != "") {
+            const lines_rand1 = CztUtility.getRandomInt(0, lines_len);
+            contacts.pl1Info = lines[lines_rand1].name;
+        }
+        
+        if(contacts.pl2 != "") {
+            const lines_rand2 = CztUtility.getRandomInt(0, lines_len);
+            contacts.pl2Info = lines[lines_rand2].name;
+        }
+
+        if(contacts.pl3 != "") {
+            const lines_rand3 = CztUtility.getRandomInt(0, lines_len);
+            contacts.pl3Info = lines[lines_rand3].name;            
+        }
+
+        this.actor.update({['system.contacts']: contacts});
+    }
 
     /**
      * Context menu entries for power rolls

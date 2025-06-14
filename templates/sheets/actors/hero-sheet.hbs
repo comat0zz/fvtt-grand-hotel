@@ -41,7 +41,7 @@
     <div class="actor-side-right czt-column-no-flex">
       <!-- Связи -->
       <div class="czt-row">
-        <div class="czt-column actor-contacts">{{localize "CZT.Actor.Contacts"}}</div>
+        <div class="czt-column"><i class="fa-solid fa-dice actor-contacts-gen" data-tooltip="{{localize "CZT.Actor.ContactsGen"}}"></i></div><div class="czt-column actor-contacts">{{localize "CZT.Actor.Contacts"}}</div>
       </div>
       <div class="czt-row">
         <div class="czt-column">
@@ -87,7 +87,7 @@
 
       <div class="czt-row">
         <div class="czt-column">
-          теги
+          <input class="actor-input-tags" name="system.tags" value="{{system.tags}}" placeholder="{{localize "CZT.Actor.Tags"}}">
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
       </div>
 
       <div class="czt-row actor-board-middle">
-        <div class="czt-column-no-flex actor-board-middle-1"><div>{{localize "CZT.Actor.ExpL"}}</div></div>
+        <div class="czt-column-no-flex actor-board-middle-1" data-tooltip="{{localize "CZT.Actor.ExpHelp"}}"><div>{{localize "CZT.Actor.ExpL"}}</div></div>
         <div class="czt-column-no-flex actor-board-middle-2">
           <input type="radio" name="system.op" value="1" data-num="1" {{#ife 1 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-1" />
         </div>
@@ -124,7 +124,7 @@
         <div class="czt-column-no-flex actor-board-middle-6">
           <input type="radio" name="system.op" value="5" data-num="5" {{#ife 5 system.op}}checked="checked"{{/ife}} class="actor-op-check actor-op-chk-5" />
         </div>
-        <div class="czt-column-no-flex actor-board-middle-7"><div>{{localize "CZT.Actor.ZealL"}}</div></div>
+        <div class="czt-column-no-flex actor-board-middle-7" data-tooltip="{{localize "CZT.Actor.ZealHelp"}}"><div>{{localize "CZT.Actor.ZealL"}}</div></div>
       </div>
 
       <div class="czt-row actor-board-bottom">

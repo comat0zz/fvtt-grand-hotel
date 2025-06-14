@@ -39,6 +39,10 @@ form.sheet.grand-hotel {
   font-family: "Fachada-Regular";
   color: #000;
 }
+form.sheet.grand-hotel .actor-type {
+  font-size: var(--font-size-36);
+  font-weight: bold;
+}
 form.sheet.grand-hotel section.window-content {
   padding-top: 0;
 }
@@ -205,6 +209,9 @@ form.sheet.grand-hotel .actor-or-board .actor-board-bottom .actor-board-bottom-3
   text-align: right;
   font-weight: bold;
   font-size: var(--font-size-20);
+}
+.actor-sides .actor-contacts-gen {
+  cursor: pointer;
 }
 
 form.sheet nav.tabs {

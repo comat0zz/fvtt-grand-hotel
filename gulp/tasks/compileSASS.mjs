@@ -10,7 +10,7 @@ const sass = gulpSass(dartSass);
 /**
  * Обычно он один, потому пока беру путь напрямую
  */
-const styleFile = plugins.basename(config.systemVTT.styles[0]);
+const styleFile = 'system.css' //plugins.basename(config.systemVTT.styles[0]);
 
 /**
  * Сборка SASS стилей в CSS
