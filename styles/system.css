@@ -348,6 +348,13 @@ form.grand-hotel.hotel .hotel-AddEmp, form.grand-hotel.hotel .hotel-LunchBreak, 
 form.grand-hotel.hotel .hotel-leCadres {
   text-align: center;
 }
+form.grand-hotel.hotel .hotel-leCadres input[type=radio] {
+  --checkbox-size: var(--font-size-12);
+  display: inline;
+}
+form.grand-hotel.hotel .hotel-leCadres .czt-column-no {
+  margin: 0 auto;
+}
 form.grand-hotel.hotel .hotel-leCadres-caption {
   text-align: center;
   font-size: var(--font-size-24);
@@ -387,6 +394,11 @@ form.grand-hotel.actor .tab-move-list .move-inline, form.grand-hotel.hotel .tab-
 }
 form.grand-hotel.actor .tab-move-list .czt-row, form.grand-hotel.hotel .tab-move-list .czt-row {
   margin-bottom: 0;
+}
+form.grand-hotel.actor .tab-move-list .move-contact-ids, form.grand-hotel.hotel .tab-move-list .move-contact-ids {
+  border: 1px solid #000;
+  padding: 3px;
+  border-radius: 30%;
 }
 form.grand-hotel.actor .tab-move-list .move-disable, form.grand-hotel.hotel .tab-move-list .move-disable {
   background-color: rgba(109, 107, 107, 0.5) !important;

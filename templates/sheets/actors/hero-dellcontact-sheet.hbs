@@ -1,0 +1,11 @@
+<div class="czt-wrapper">
+  <div class="czt-row">
+    <div class="czt-column">
+      <select name="contact">
+        {{#each contacts as |contact|}}
+        <option value="{{contact.id}}">{{contact.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>

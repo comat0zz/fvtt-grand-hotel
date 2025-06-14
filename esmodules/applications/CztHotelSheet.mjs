@@ -229,6 +229,9 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
 
         const LunchBreak = this.element.querySelectorAll(".hotel-LunchBreak");
         LunchBreak.forEach((d) => d.addEventListener("click", this._onLunchBreak.bind(this)));
+
+        const hotelActOpCheck = this.element.querySelectorAll(".hotel-act-op-check");
+        hotelActOpCheck.forEach((d) => d.addEventListener("click", this._onhotelActOpCheck.bind(this)));
     }
 
     /** @override */
@@ -256,6 +259,13 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
                 actor.update({ ['system.employees']: [] })
             }
         });
+    }
+
+    async _onhotelActOpCheck(event, target) {
+        const num = $(event.currentTarget).data("num");
+        const actor_id = $(event.currentTarget).data("actorid");
+        var emp = game.actors.get(actor_id);
+        emp.update({['system.op']: num});
     }
 
     async _onCrisis(event, target) {

@@ -144,6 +144,10 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         }
 
         context.contacts = game.actors.filter(actor => { return (ActorTypes.includes(actor.type) && actor._id != this.document._id )});
+        context.is_tags = this.document.system.tags.split(",").length;
+
+        const moves_contacts = this.document.system.moves_contacts;
+        context.moves_contacts = game.actors.filter(actor => { return (ActorTypes.includes(actor.type) && moves_contacts.includes(actor._id))});
 
         game.logger.log(context)
         return context
@@ -234,6 +238,24 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 callback: element => {
                     const moveId = $(element).data("moveid");
                     this._showExamples(moveId);
+                }
+            },
+            {
+                name: game.i18n.localize("CZT.Moves.AddContact"),
+                icon: '',
+                condition: (el) => (el.dataset.type == 'uniq' && el.dataset.relation),
+                callback: element => {
+                    const moveId = $(element).data("moveid");
+                    this._AddContact(moveId);
+                }
+            },
+            {
+                name: game.i18n.localize("CZT.Moves.DellContact"),
+                icon: '',
+                condition: (el) => (el.dataset.type == 'uniq' && el.dataset.relation),
+                callback: element => {
+                    const moveId = $(element).data("moveid");
+                    this._DellContact(moveId);
                 }
             }
         ];
@@ -385,6 +407,85 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             speaker: ChatMessage.getSpeaker(),
             content: template
         });
+    }
+
+    async _DellContact(moveId) {
+        let moves_contacts = this.document.system.moves_contacts;
+        let con = [];
+
+        moves_contacts.forEach(mc => {
+            let n = game.actors.get(mc);
+            con.push({
+                id: mc,
+                name: n.name
+            })
+        })
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/actors/hero-dellcontact-sheet.hbs`, {
+            contacts: con
+        });
+
+
+
+        new foundry.applications.api.DialogV2({
+            window: { title: game.i18n.localize("CZT.Moves.DellContact") },
+            content: template,
+            classes: ['show-contacts'],
+            buttons: [{
+                action: "dell",
+                label: game.i18n.localize("CZT.Moves.DellContactShort"),
+                callback: (event, button, dialog) => {
+                    const id = button.form.elements.contact.value;
+                    moves_contacts = CztUtility.delElementArray(moves_contacts, id);
+                    this.actor.update({['system.moves_contacts']: moves_contacts});
+                }
+            }]
+            }).render({ force: true });
+    }
+
+    async _AddContact(moveId) {
+
+        const contacts = this.document.system.contacts;
+        let moves_contacts = this.document.system.moves_contacts;
+        let con = {};
+        if(contacts.pl1 != "" && !moves_contacts.includes(contacts.pl1)) {
+            con.pl1 = {
+                id: contacts.pl1,
+                name: game.actors.get(contacts.pl1).name
+            }
+        }
+        if(contacts.pl2 != "" && !moves_contacts.includes(contacts.pl2)) {
+            con.pl2 = {
+                id: contacts.pl2,
+                name: game.actors.get(contacts.pl2).name
+            }
+        }
+        if(contacts.pl3 != "" && !moves_contacts.includes(contacts.pl3)) {
+            con.pl3 = {
+                id: contacts.pl3,
+                name: game.actors.get(contacts.pl3).name
+            }
+        }
+
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/actors/hero-addcontact-sheet.hbs`, {
+            contacts: con
+        });
+
+
+
+        new foundry.applications.api.DialogV2({
+            window: { title: game.i18n.localize("CZT.Moves.AddContact") },
+            content: template,
+            classes: ['show-contacts'],
+            buttons: [{
+                action: "add",
+                label: game.i18n.localize("CZT.Moves.AddContactShort"),
+                callback: (event, button, dialog) => {
+                    const id = button.form.elements.contact.value;
+                    moves_contacts.push(id);
+                    this.actor.update({['system.moves_contacts']: moves_contacts});
+                }
+            }]
+            }).render({ force: true });
     }
 
 }

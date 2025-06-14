@@ -10,7 +10,9 @@ export const TemplatesList = {
         'sheets/actors/moves-list-sheet.hbs',
         'sheets/actors/hotel-employees-sheet.hbs',
         'sheets/actors/hotel-crisis-sheet.hbs',
-        'sheets/actors/hotel-special-moves.hbs'
+        'sheets/actors/hotel-special-moves.hbs',
+        'sheets/actors/hero-addcontact-sheet.hbs',
+        'sheets/actors/hero-dellcontact-sheet.hbs'
     ],
     'ItemSheets': [
         'sheets/items/move-sheet.hbs',

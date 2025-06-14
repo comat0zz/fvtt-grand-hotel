@@ -1,0 +1,17 @@
+<div class="czt-wrapper">
+  <div class="czt-row">
+    <div class="czt-column">
+      <select name="contact">
+        {{#if contacts.pl1}}
+        <option value="{{contacts.pl1.id}}">{{contacts.pl1.name}}</option>
+        {{/if}}
+        {{#if contacts.pl2}}
+        <option value="{{contacts.pl2.id}}">{{contacts.pl2.name}}</option>
+        {{/if}}
+        {{#if contacts.pl3}}
+        <option value="{{contacts.pl3.id}}">{{contacts.pl3.name}}</option>
+        {{/if}}
+      </select>
+    </div>
+  </div>
+</div>

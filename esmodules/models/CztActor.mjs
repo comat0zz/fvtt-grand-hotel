@@ -26,8 +26,8 @@ export default class CztActor extends foundry.abstract.TypeDataModel {
 
         schema.tags = new fields.StringField({ required: false, nullable: false, initial: "" });
 
-        // Опции задействованных ходов и список коллег, который применен в ходе связей
         schema.moves_disabled = new fields.ArrayField(new fields.StringField());
+        schema.moves_contacts = new fields.ArrayField(new fields.StringField());
 
 
         return schema;

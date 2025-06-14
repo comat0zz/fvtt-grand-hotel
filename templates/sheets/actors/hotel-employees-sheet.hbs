@@ -40,16 +40,24 @@
             <div class="czt-column">{{leCadre.name}}</div>
           </div>
           <div class="czt-row">
+            <div class="czt-column"><input type="button" data-num="{{leCadre._id}}" value="{{localize "CZT.Hotel.DelEmp"}}" class="hotel-DelEmp" /></div>
+          </div>
+          <div class="czt-row">
             <div class="czt-column"><img src="{{leCadre.img}}"></div>
           </div>
           <div class="czt-row">
-            <div class="czt-column">список их тегов для мастера</div>
+            <div class="czt-column-no">
+              <input type="radio" name="leCadre_op_{{leCadre._id}}" value="1" data-num="1" data-actorid="{{leCadre._id}}" {{#ife 1 leCadre.system.op}}checked="checked"{{/ife}} class="hotel-act-op-check" />
+              <input type="radio" name="leCadre_op_{{leCadre._id}}" value="2" data-num="2" data-actorid="{{leCadre._id}}" {{#ife 2 leCadre.system.op}}checked="checked"{{/ife}} class="hotel-act-op-check" />
+              <input type="radio" name="leCadre_op_{{leCadre._id}}" value="3" data-num="3" data-actorid="{{leCadre._id}}" {{#ife 3 leCadre.system.op}}checked="checked"{{/ife}} class="hotel-act-op-check" />
+              <input type="radio" name="leCadre_op_{{leCadre._id}}" value="4" data-num="4" data-actorid="{{leCadre._id}}" {{#ife 4 leCadre.system.op}}checked="checked"{{/ife}} class="hotel-act-op-check" />
+              <input type="radio" name="leCadre_op_{{leCadre._id}}" value="5" data-num="5" data-actorid="{{leCadre._id}}" {{#ife 5 leCadre.system.op}}checked="checked"{{/ife}} class="hotel-act-op-check" />
+            </div>
           </div>
           <div class="czt-row">
-            <div class="czt-column">ор</div>
-          </div>
-          <div class="czt-row">
-            <div class="czt-column"><input type="button" data-num="{{leCadre._id}}" value="{{localize "CZT.Hotel.DelEmp"}}" class="hotel-DelEmp" /></div>
+            <div class="czt-column">
+              {{leCadre.system.tags}}
+            </div>
           </div>
       </div>
     {{/each}}

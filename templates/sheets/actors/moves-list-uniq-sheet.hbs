@@ -3,17 +3,38 @@
 
   {{#each moveUniq as |move|}}
   <!-- start move -->
-  <div class="czt-row move-item{{#ifIn move._id ../system.moves_disabled}} move-disable{{/ifIn}}" data-moveid="{{move._id}}" data-type="{{move.system.types}}">
+  <div {{#if move.system.options.relation}}data-relation="1"{{/if}} class="czt-row move-item{{#ifIn move._id ../system.moves_disabled}} move-disable{{/ifIn}}{{#if move.system.options.session}}{{#ifgt ../is_tags 4}} move-disable{{/ifgt}}{{/if}}" data-moveid="{{move._id}}" data-type="{{move.system.types}}">
     <div class="czt-column">
       <div class="czt-row">
         <div class="czt-column move-pre-name">{{move.system.grey}}</div>
       </div>
       <div class="czt-row">
-        <div class="czt-column move-name">{{move.name}}</div>
+        <div class="czt-column move-name">{{move.name}}&nbsp;
+          {{#if move.system.options.session}}
+            ({{localize "CZT.Moves.Options.sessionShort"}}{{#ifgt is_tags 4}}&nbsp;{{localize "CZT.Moves.Options.tags5"}}{{/ifgt}})
+          {{/if}}
+          {{#if move.system.options.scene}}
+            ({{localize "CZT.Moves.Options.sceneShort"}})
+          {{/if}}
+          {{#if move.system.options.relation}}
+            ({{localize "CZT.Moves.Options.relation"}})
+          {{/if}}
+        </div>
       </div>
       <div class="czt-row">
         <div class="czt-column move-desc">{{{move.system.description}}}</div>
       </div>
+      {{#if move.system.options.relation}}
+        {{#if ../moves_contacts}}
+          <div class="czt-row">
+            <div class="czt-column-no">
+              {{#each ../moves_contacts as |smc|}}
+                <span class="move-contact-ids" data-contactid="{{smc.id}}">{{smc.name}}</span>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      {{/if}}
     </div>
   </div>
   <!-- end move -->
