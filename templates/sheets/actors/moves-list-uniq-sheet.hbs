@@ -11,7 +11,7 @@
       <div class="czt-row">
         <div class="czt-column move-name">{{move.name}}&nbsp;
           {{#if move.system.options.session}}
-            ({{localize "CZT.Moves.Options.sessionShort"}}{{#ifgt is_tags 4}}&nbsp;{{localize "CZT.Moves.Options.tags5"}}{{/ifgt}})
+            ({{localize "CZT.Moves.Options.sessionShort"}}{{#ifgt ../is_tags ../hotel.system.tags_number}}&#42889;&nbsp;{{localize "CZT.Moves.Options.tags5"}}&nbsp;{{../hotel.system.tags_number}}!{{/ifgt}})
           {{/if}}
           {{#if move.system.options.scene}}
             ({{localize "CZT.Moves.Options.sceneShort"}})

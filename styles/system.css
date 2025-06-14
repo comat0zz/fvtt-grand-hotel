@@ -406,6 +406,9 @@ form.grand-hotel.actor .tab-move-list .move-contact-ids, form.grand-hotel.hotel 
 }
 form.grand-hotel.actor .tab-move-list .move-disable, form.grand-hotel.hotel .tab-move-list .move-disable {
   background-color: rgba(109, 107, 107, 0.5) !important;
+  border: 1px dashed #000;
+  border-radius: 2%;
+  padding: 5px;
 }
 form.grand-hotel.actor .tab-move-list .move-item, form.grand-hotel.hotel .tab-move-list .move-item {
   background: url("../assets/move-down.png") no-repeat;

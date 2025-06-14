@@ -373,9 +373,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             
             if(hotel_id != "") {
                 var grand_hotel = game.actors.get(hotel_id);
-                
                 var success_scale = grand_hotel.system.success_scale;
-                console.log(success_scale)
                 if(success_scale < 4) {
                     success_scale = success_scale + 1;
                     grand_hotel.update({['system.success_scale']: success_scale});
