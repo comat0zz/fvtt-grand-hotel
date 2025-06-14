@@ -1,0 +1,20 @@
+<section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<div class="czt-wrapper tab-move-list">
+
+  {{#each moveSpecial as |move|}}
+    <!-- start move -->
+  <div class="czt-row move-item" data-moveid="{{move._id}}" data-type="{{move.system.types}}">
+    <div class="czt-column">
+      <div class="czt-row">
+        <div class="czt-column move-name">{{move.name}}</div>
+      </div>
+      <div class="czt-row">
+        <div class="czt-column move-desc">{{{move.system.description}}}</div>
+      </div>
+    </div>
+  </div>
+  <!-- end move -->
+  {{/each}}
+
+</div>
+</section>

@@ -379,37 +379,37 @@ form.grand-hotel.guest .guest-sides .guest-side-right {
   float: left;
 }
 
-form.grand-hotel.actor .tab-move-list p {
+form.grand-hotel.actor .tab-move-list p, form.grand-hotel.hotel .tab-move-list p {
   margin: 0;
 }
-form.grand-hotel.actor .tab-move-list .move-inline {
+form.grand-hotel.actor .tab-move-list .move-inline, form.grand-hotel.hotel .tab-move-list .move-inline {
   display: inline;
 }
-form.grand-hotel.actor .tab-move-list .czt-row {
+form.grand-hotel.actor .tab-move-list .czt-row, form.grand-hotel.hotel .tab-move-list .czt-row {
   margin-bottom: 0;
 }
-form.grand-hotel.actor .tab-move-list .move-disable {
+form.grand-hotel.actor .tab-move-list .move-disable, form.grand-hotel.hotel .tab-move-list .move-disable {
   background-color: rgba(109, 107, 107, 0.5) !important;
 }
-form.grand-hotel.actor .tab-move-list .move-item {
+form.grand-hotel.actor .tab-move-list .move-item, form.grand-hotel.hotel .tab-move-list .move-item {
   background: url("../assets/move-down.png") no-repeat;
   background-position: bottom;
   padding-bottom: 20px;
 }
-form.grand-hotel.actor .tab-move-list .move-item .move-pre-name {
+form.grand-hotel.actor .tab-move-list .move-item .move-pre-name, form.grand-hotel.hotel .tab-move-list .move-item .move-pre-name {
   font-family: "Myriad-Pro-Light SemiCondensed";
 }
-form.grand-hotel.actor .tab-move-list .move-item .move-name {
+form.grand-hotel.actor .tab-move-list .move-item .move-name, form.grand-hotel.hotel .tab-move-list .move-item .move-name {
   font-size: var(--font-size-18);
   font-weight: bold;
 }
-form.grand-hotel.actor .tab-move-list .move-item:last-child {
+form.grand-hotel.actor .tab-move-list .move-item:last-child, form.grand-hotel.hotel .tab-move-list .move-item:last-child {
   background: unset;
 }
-form.grand-hotel.actor .tab-move-list .move-results {
+form.grand-hotel.actor .tab-move-list .move-results, form.grand-hotel.hotel .tab-move-list .move-results {
   margin-top: 5px;
 }
-form.grand-hotel.actor .tab-move-list .move-res-caption {
+form.grand-hotel.actor .tab-move-list .move-res-caption, form.grand-hotel.hotel .tab-move-list .move-res-caption {
   font-size: var(--font-size-16);
   font-weight: bold;
 }

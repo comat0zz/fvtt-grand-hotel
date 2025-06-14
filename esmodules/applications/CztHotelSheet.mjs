@@ -69,6 +69,9 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         employees: {
             template: `${SYSTEM.template_path}/sheets/actors/hotel-employees-sheet.hbs`
         },
+        specials: {
+            template: `${SYSTEM.template_path}/sheets/actors/hotel-special-moves.hbs`
+        },
         notes: {
             template: `${SYSTEM.template_path}/sheets/actors/notes-tab-sheet.hbs`
         },
@@ -132,6 +135,13 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
                     icon: '',
                     label: 'CZT.Hotel.Navs.Employees',
                 },
+                specials: {
+                    cssClass: this.tabGroups.primary === 'specials' ? 'active' : '',
+                    group: 'primary',
+                    id: 'specials',
+                    icon: '',
+                    label: 'CZT.Moves.Types.Special',
+                },
                 notes: {
                     cssClass: this.tabGroups.primary === 'notes' ? 'active' : '',
                     group: 'primary',
@@ -147,6 +157,56 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
 
         game.logger.log(context)
         return context
+    }
+
+    /** @inheritdoc */
+    async _onFirstRender(context, options) {
+        await super._onFirstRender(context, options);
+
+        this._createContextMenu(this._moveListContextOptions, ".tab-move-list .move-item", {
+            hookName: "getMoveListContextOptions",
+            fixed: true,
+            parentClassHooks: false,
+        });
+    }
+
+    /**
+     * Context menu entries for power rolls
+     * @returns {ContextMenuEntry}
+     */
+    _moveListContextOptions() {
+        return [
+            {
+                name: game.i18n.localize("CZT.Moves.Navs.examples"),
+                icon: '',
+                callback: element => {
+                    const moveId = $(element).data("moveid");
+                    this._showExamples(moveId);
+                }
+            }
+        ];
+    };
+
+    async _showExamples(moveId) {
+        const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/items/move-examples.hbs`, {
+            content: move.system.examples
+        });
+
+        const title = game.i18n.localize("CZT.Moves.Example.Title");
+        const method = await foundry.applications.api.DialogV2.wait({
+            window: { 
+                title: `${title}: ${move.name}`
+            },
+            content: template,
+            classes: ['show-move-examples'],
+            buttons: [
+            {
+                label: game.i18n.localize("CZT.Moves.Example.Button"),
+                action: "Close",
+            }
+            ]
+        })
     }
 
     /** @override */
@@ -166,6 +226,9 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             const isDebug = this.element.querySelectorAll(".hotel-isDebug");
             isDebug.forEach((d) => d.addEventListener("click", this._onisDebug.bind(this)));
         }
+
+        const LunchBreak = this.element.querySelectorAll(".hotel-LunchBreak");
+        LunchBreak.forEach((d) => d.addEventListener("click", this._onLunchBreak.bind(this)));
     }
 
     /** @override */
@@ -175,6 +238,7 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             case 'notes':
             case 'employees':
             case 'crisis':
+            case 'specials':
                 context.tab = context.tabs[partId];
                 break;
             default:
@@ -225,4 +289,17 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         }    
     }
 
+    async _onLunchBreak(event, target) {
+
+        var crisis = this.document.system.crisis;
+        if(crisis < 5) {
+            crisis = crisis + 1;
+            this.actor.update({['system.crisis']: crisis});
+        }
+        const employees = foundry.utils.duplicate(this.document.system.employees);
+        employees.forEach((actor_id) => {
+            var emp = game.actors.get(actor_id);
+            emp.update({['system.tags']: ""});
+        })
+    }
 }

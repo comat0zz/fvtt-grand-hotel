@@ -354,6 +354,19 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             move_res = move.system.results.on_6;
         }
 
+        // Сдвиг счетчика кризиса
+        if(total <= 6) {
+            const hotel_id = this.document.system.grand_hotel;
+            if(hotel_id != "") {
+                var grand_hotel = game.actors.get(hotel_id);
+                var crisis = grand_hotel.system.crisis;
+                if(crisis < 5) {
+                    crisis = crisis + 1;
+                    grand_hotel.update({['system.crisis']: crisis});
+                }
+            }
+        }
+
         const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
             finalFormula: finalFormula,
             formula: formula,
