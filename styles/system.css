@@ -302,6 +302,10 @@ form.grand-hotel.hotel .hotel-wtf {
 form.grand-hotel.hotel prose-mirror {
   height: 600px;
 }
+form.grand-hotel.hotel .success_scale-reset {
+  border: 1px solid #000;
+  border-radius: 9%;
+}
 form.grand-hotel.hotel .hotel-crisis {
   background: url("../assets/crisis-bg.png") no-repeat;
   background-size: 100% 100%;

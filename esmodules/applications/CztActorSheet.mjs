@@ -315,7 +315,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         const move = await game.packs.get(`${SYSTEM.id}.moves`).get(moveId);
         let formula = '2d6';
         if(isHelp) {formula = '3d6'};
-
+        const hotel_id = this.document.system.grand_hotel;
         // Бонус от положения на шкале
         const move_op = move.system.op;
         const actor_op = this.document.system.op;
@@ -370,6 +370,21 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         let move_res = "";
         if(total >= 10){
             move_res = move.system.results.on_10;
+            
+            if(hotel_id != "") {
+                var grand_hotel = game.actors.get(hotel_id);
+                
+                var success_scale = grand_hotel.system.success_scale;
+                console.log(success_scale)
+                if(success_scale < 4) {
+                    success_scale = success_scale + 1;
+                    grand_hotel.update({['system.success_scale']: success_scale});
+                    ui.notifications.error("CZT.Hotel.success_scale_notify", {console: false, localize: true, permanent: true});
+                }
+                if(success_scale >= 4) {
+                    ui.notifications.error("CZT.Hotel.success_scale_notify_end", {console: false, localize: true, permanent: true});
+                }
+            }            
         }else if(total >= 7 && total <= 9) {
             move_res = move.system.results.on_79;
         }else{
@@ -378,13 +393,13 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
 
         // Сдвиг счетчика кризиса
         if(total <= 6) {
-            const hotel_id = this.document.system.grand_hotel;
             if(hotel_id != "") {
                 var grand_hotel = game.actors.get(hotel_id);
                 var crisis = grand_hotel.system.crisis;
                 if(crisis < 5) {
                     crisis = crisis + 1;
                     grand_hotel.update({['system.crisis']: crisis});
+                    ui.notifications.warn("CZT.Hotel.CrisisUp", {console: false, localize: true, permanent: true});
                 }
             }
         }
@@ -423,7 +438,6 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/actors/hero-dellcontact-sheet.hbs`, {
             contacts: con
         });
-
 
 
         new foundry.applications.api.DialogV2({

@@ -216,6 +216,9 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         const changeCrisis = this.element.querySelectorAll(".crisis-check");
         changeCrisis.forEach((d) => d.addEventListener("click", this._onCrisis.bind(this)));
 
+        const success_scale = this.element.querySelectorAll(".success_scale-check");
+        success_scale.forEach((d) => d.addEventListener("click", this._onSuccess_scale.bind(this)));
+
         const addEmploye = this.element.querySelectorAll(".hotel-AddEmp");
         addEmploye.forEach((d) => d.addEventListener("click", this._onAddEmp.bind(this)));
 
@@ -232,6 +235,9 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
 
         const hotelActOpCheck = this.element.querySelectorAll(".hotel-act-op-check");
         hotelActOpCheck.forEach((d) => d.addEventListener("click", this._onhotelActOpCheck.bind(this)));
+
+        const successScaleReset = this.element.querySelectorAll(".success_scale-reset");
+        successScaleReset.forEach((d) => d.addEventListener("click", this._onSuccessScaleReset.bind(this)));
     }
 
     /** @override */
@@ -247,6 +253,11 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             default:
         }
       return context;
+    }
+
+    async _onSuccessScaleReset(event, target) {
+        this.actor.update({ ['system.success_scale']: 0 });
+        ui.notifications.success("CZT.Hotel.success_scale_notify_start", {console: false, localize: true});
     }
 
     async _onisDebug(event, target) {
@@ -274,6 +285,16 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             Crisis -= 1;
         }
         this.actor.update({ ['system.crisis']: Crisis });
+        ui.notifications.info("CZT.Hotel.CrisisUpCustom", {console: false, localize: true});
+    }
+
+    async _onSuccess_scale(event, target) {
+        var SC = $(event.currentTarget).data("num");
+        if(!$(event.currentTarget)[0].checked) {
+            SC -= 1;
+        }
+        this.actor.update({ ['system.success_scale']: SC });
+        ui.notifications.info("CZT.Hotel.success_scale_notify_mod", {console: false, localize: true});
     }
 
     async _onDelEmp(event, target) {
@@ -305,11 +326,16 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         if(crisis < 5) {
             crisis = crisis + 1;
             this.actor.update({['system.crisis']: crisis});
+            ui.notifications.warn("CZT.Hotel.CrisisUp", {console: false, localize: true, permanent: true});
         }
         const employees = foundry.utils.duplicate(this.document.system.employees);
         employees.forEach((actor_id) => {
             var emp = game.actors.get(actor_id);
-            emp.update({['system.tags']: ""});
+            emp.update({
+                ['system.tags']: "",
+                ['system.moves_disabled']: []
+            });
         })
+        ui.notifications.success("CZT.Hotel.LunchBreak_notify", {console: false, localize: true, permanent: true});
     }
 }

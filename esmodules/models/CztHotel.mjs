@@ -36,6 +36,9 @@ export default class CztHotel extends foundry.abstract.TypeDataModel {
 
         schema.crisis = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 5 });
 
+        schema.success_scale = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 4 });
+        schema.tags_number = new fields.NumberField({ ...requiredInteger, initial: 5, min: 0});
+
         return schema;
     }
 

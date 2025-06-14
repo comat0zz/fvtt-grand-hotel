@@ -22,5 +22,37 @@
   <div class="czt-row">
     <div class="czt-column">{{localize "CZT.Hotel.CrisisL"}}</div>
   </div>
+  <div class="czt-row">
+    <div class="czt-column">{{localize "CZT.Hotel.CrisisBottom"}}</div>
+  </div>
+  
+  <div class="czt-row">
+    <div class="czt-column">{{localize "CZT.Hotel.success_scale"}}</div>
+  </div>
+
+  <div class="czt-row hotel-success_scale">
+    <div class="czt-column">
+      <input type="checkbox" data-num="1" {{#iflteq 1 system.success_scale}}checked="checked"{{/iflteq}} class="success_scale-check success_scale-chk-1" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="2" {{#iflteq 2 system.success_scale}}checked="checked"{{/iflteq}} class="success_scale-check success_scale-chk-2" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="3" {{#iflteq 3 system.success_scale}}checked="checked"{{/iflteq}} class="success_scale-check success_scale-chk-3" />
+    </div>
+    <div class="czt-column">
+      <input type="checkbox" data-num="4" {{#iflteq 4 system.success_scale}}checked="checked"{{/iflteq}} class="success_scale-check success_scale-chk-4" />
+    </div>
+    <div class="czt-column">
+      <input type="button" value="{{localize "CZT.Hotel.success_scale_reload"}}" class="success_scale-reset" data-tooltip="{{localize "CZT.Hotel.success_scale_reload_tooltip"}}">
+    </div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">{{localize "CZT.Hotel.success_scale_reload_help"}}</div>
+  </div>
+  <div class="czt-row">
+    <div class="czt-column">{{localize "CZT.Hotel.tags_number"}}</div>
+    <div class="czt-column">{{formInput systemFields.tags_number value=system.tags_number}} </div>
+  </div>
 </div>
 </section>
