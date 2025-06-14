@@ -1,16 +1,4 @@
 - Колода карт (надо разобраться в типах колод и понять как отображать рубашки)
-- Настройка сколько тегов блокирует ход. вероятно на уровне отеля
 - Едут картинки в дашборде отеля. Надо выровнять под один размер. Растягивать? Можно обрезать под часть фоновой
 - Добавить О и Р в дашборд у участников
-- Переделать вид отключенного хода: закруглить углы, сделать пунктирынй бордер
-- КНопка сбросить шкалу: Можно кнопку ГМу что-то вроде "новый виток"
-
-
-FoundryVTT | 2025-06-14 18:10:57 | [warn] The system "grand-hotel" is using "gridDistance" which is deprecated in favor of "grid.distance".
-Deprecated since Version 12
-Backwards-compatible support will be removed in Version 14
-FoundryVTT | 2025-06-14 18:10:57 | [warn] The system "grand-hotel" is using "gridUnits" which is deprecated in favor of "grid.units".
-Deprecated since Version 12
-Backwards-compatible support will be removed in Version 14
-FoundryVTT | 2025-06-14 18:10:57 | [info] No system update for Grand Hotel is currently available.
 
