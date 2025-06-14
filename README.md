@@ -4,7 +4,7 @@
 
 Пакет разработан под руководством авторов игры [Geese and Dragons](https://t.me/GrandLaHotel)
 
-Пакет в каталоге Foundry VTT: https://foundryvtt.com/packages/
+Пакет в каталоге Foundry VTT: https://foundryvtt.com/packages/grand-hotel
 
 Книга правил https://rpgbook.ru/GRAND_HOTEL
 
