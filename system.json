@@ -72,6 +72,19 @@
           "PLAYER": "OBSERVER",
           "ASSISTANT": "OWNER"
       }
+    },
+    {
+      "name": "contacts",
+      "label": "Связи les cadres",
+      "system": "grand-hotel",
+      "path": "packs/contacts",
+      "type": "RollTable",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
     }
   ],
   "languages": [

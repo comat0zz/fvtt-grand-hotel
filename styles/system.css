@@ -185,7 +185,7 @@ form.sheet.grand-hotel .actor-or-board .actor-board-bottom .actor-board-bottom-3
 }
 
 .actor-work {
-  line-height: 31px;
+  line-height: 16px;
 }
 
 .actor-sides .czt-column-no-flex {
@@ -199,6 +199,12 @@ form.sheet.grand-hotel .actor-or-board .actor-board-bottom .actor-board-bottom-3
 }
 .actor-sides .actor-side-right {
   padding-right: 5px;
+  width: 70%;
+}
+.actor-sides .actor-contacts {
+  text-align: right;
+  font-weight: bold;
+  font-size: var(--font-size-20);
 }
 
 form.sheet nav.tabs {

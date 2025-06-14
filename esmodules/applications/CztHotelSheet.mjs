@@ -88,7 +88,7 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             this.tabGroups.primary = 'hotel';
         }
 
-        const Employees = game.actors.filter(actor => { return (ActorTypes.includes(actor.type) && actor.system.grand_otel === "")});
+        const Employees = game.actors.filter(actor => { return (ActorTypes.includes(actor.type) && actor.system.grand_hotel === "")});
         
         const leCadresIds = this.document.system.employees;
         const leCadres = game.actors.filter(actor => { return (leCadresIds.includes(actor._id))});
@@ -187,7 +187,7 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
 
         game.actors.forEach((actor) => {
             if(ActorTypes.includes(actor.type)) {
-                actor.update({['system.grand_otel']: ""})
+                actor.update({['system.grand_hotel']: ""})
             }else if(actor.type == 'hotel'){
                 actor.update({ ['system.employees']: [] })
             }
@@ -207,7 +207,7 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         var employees = foundry.utils.duplicate(this.document.system.employees);
         employees = CztUtility.delElementArray(employees, employe_id);
         var emp = game.actors.get(employe_id);
-        emp.update({['system.grand_otel']: ""});
+        emp.update({['system.grand_hotel']: ""});
         this.actor.update({ ['system.employees']: employees });
         this.actor.render(true);
     }
@@ -219,7 +219,7 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         if(!employees.includes(employe_id)) {
             employees.push(employe_id);
             var emp = game.actors.get(employe_id);
-            emp.update({['system.grand_otel']: this.actor._id});
+            emp.update({['system.grand_hotel']: this.actor._id});
             this.actor.update({ ['system.employees']: employees });
             this.actor.render(true);
         }    

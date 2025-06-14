@@ -136,8 +136,14 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         const moves = await game.packs.get(`${SYSTEM.id}.moves`).getDocuments();
         context.moveUniq = await moves.filter(e => e.system.types === "uniq" && e.system.role === this.document.type);
         context.moveBase = await moves.filter(e => e.system.types === "base");
+        
+        context.hotel = '';
+        if(this.document.system.grand_hotel != "") {
+            const hotel = game.actors.filter(actor => { return (actor.type === "hotel" && actor._id == this.document.system.grand_hotel)});
+            context.hotel = hotel[0];
+        }
 
-       
+        context.contacts = game.actors.filter(actor => { return (ActorTypes.includes(actor.type) && actor._id != this.document._id )});
 
         game.logger.log(context)
         return context
@@ -145,12 +151,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
 
     /** @override */
     _onRender(context, options) {
-        super._onRender((context, options))
-
-        
-       // const moveCtxMenu = 
-       // moveCtxMenu.forEach((d) => d.addEventListener("contextmenu", this._onMoveCtxMenu.bind(this)))
-        //this._createContextMenu(this._powerRollContextOptions, '.tab-move-list .move-item', {});
+        super._onRender((context, options));
     }
 
     /** @inheritdoc */
@@ -163,6 +164,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             parentClassHooks: false,
         });
     }
+
 
     /**
      * Context menu entries for power rolls

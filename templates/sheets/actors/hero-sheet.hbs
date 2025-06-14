@@ -26,9 +26,11 @@
           {{localize "CZT.Actor.Work"}}
         </div>
         <div class="czt-column">
-          <select name="system.grand_hotel_change">
-            <option value="">{{localize "CZT.Actor.NoWork"}}</option>
-          </select>
+          {{#if system.grand_hotel}}
+            {{hotel.name}}
+          {{else}}
+            {{localize "CZT.Actor.NoWork"}}
+          {{/if}}
         </div>
       </div>
 
@@ -37,11 +39,52 @@
       <img src="{{actor.img}}" data-edit="img" data-action="editImage" />
     </div>
     <div class="actor-side-right czt-column-no-flex">
+      <!-- Связи -->
+      <div class="czt-row">
+        <div class="czt-column actor-contacts">{{localize "CZT.Actor.Contacts"}}</div>
+      </div>
       <div class="czt-row">
         <div class="czt-column">
-          связи
+          <select name="system.contacts.pl1">
+            <option value=""> -- </option>
+            {{#each contacts as |c|}}
+              <option value="{{c._id}}"{{#ife c._id ../system.contacts.pl1}} selected{{/ife}}>{{c.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="czt-column">
+          {{formInput systemFields.contacts.fields.pl1Info value=system.contacts.pl1Info}}
         </div>
       </div>
+
+      <div class="czt-row">
+        <div class="czt-column">
+          <select name="system.contacts.pl2">
+            <option value=""> -- </option>
+            {{#each contacts as |c|}}
+              <option value="{{c._id}}"{{#ife c._id ../system.contacts.pl2}} selected{{/ife}}>{{c.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="czt-column">
+          {{formInput systemFields.contacts.fields.pl2Info value=system.contacts.pl2Info}}
+        </div>
+      </div>
+
+      <div class="czt-row">
+        <div class="czt-column">
+          <select name="system.contacts.pl3">
+            <option value=""> -- </option>
+            {{#each contacts as |c|}}
+              <option value="{{c._id}}"{{#ife c._id ../system.contacts.pl3}} selected{{/ife}}>{{c.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="czt-column">
+          {{formInput systemFields.contacts.fields.pl3Info value=system.contacts.pl3Info}}
+        </div>
+      </div>
+
       <div class="czt-row">
         <div class="czt-column">
           теги
