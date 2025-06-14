@@ -111,6 +111,6 @@
   "gridDistance": 1,
   "gridUnits": "m",
   "url": "https://github.com/comat0zz/fvtt-grand-hotel",
-  "manifest": "https://github.com/comat0zz/fvtt-grand-hotel/releases/latest/download/system.json",
-  "download": "https://github.com/comat0zz/fvtt-grand-hotel/releases/latest/download/grand-hotel.zip"
+  "manifest": "https://github.com/comat0zz/fvtt-grand-hotel/releases/download/vtt13-1.0/system.json",
+  "download": "https://github.com/comat0zz/fvtt-grand-hotel/releases/download/vtt13-1.0/grand-hotel.zip"
 }
