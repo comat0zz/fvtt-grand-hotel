@@ -63,6 +63,9 @@
         "Description": "Описание",
         "Skills": "Навыки",
         "ForNotes": "Для заметок"
+      },
+      "Notify": {
+        "Speaker": "ВАЖНОЕ ОБЪЯВЛЕНИЕ"
       }
     },
     "Guest": {

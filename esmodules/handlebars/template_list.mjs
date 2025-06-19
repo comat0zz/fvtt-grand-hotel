@@ -22,6 +22,7 @@ export const TemplatesList = {
         'sheets/items/move-examples.hbs'
     ],
     'Chats': [
-        'chats/dices-roll.hbs'
+        'chats/dices-roll.hbs',
+        'chats/czt-chat-notify.hbs'
     ]
 }

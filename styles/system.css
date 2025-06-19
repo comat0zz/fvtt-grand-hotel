@@ -439,3 +439,39 @@ form.grand-hotel.actor .tab-move-list .move-res-caption, form.grand-hotel.hotel 
 .show-move-examples {
   width: 600px;
 }
+
+li.chat-message:has(.chat-notify-turquoise) {
+  background-color: rgb(78, 165, 158);
+  color: #000;
+}
+li.chat-message:has(.chat-notify-red) {
+  background-color: rgb(221, 45, 45);
+  color: #fff;
+}
+li.chat-message:has(.chat-notify-green) {
+  background-color: rgb(44, 169, 42);
+  color: #fff;
+}
+li.chat-message:has(.chat-notify-blue) {
+  background-color: #8c92e7;
+  color: #fff;
+}
+li.chat-message:has(.chat-notify-yellow) {
+  background-color: rgb(218, 223, 59);
+  color: #000;
+}
+li.chat-message:has(.chat-notify-pink) {
+  background-color: rgb(183, 127, 181);
+  color: #fff;
+}
+li.chat-message:has(.chat-notify-orange) {
+  background-color: #fe7f00;
+  color: #000;
+}
+
+.czt-chat-notify .czt-chat-notify-title {
+  font-weight: bold;
+}
+.czt-chat-notify .czt-chat-notify-message {
+  font-size: 12px;
+}

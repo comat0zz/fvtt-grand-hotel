@@ -257,7 +257,10 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
 
     async _onSuccessScaleReset(event, target) {
         this.actor.update({ ['system.success_scale']: 0 });
-        ui.notifications.success("CZT.Hotel.success_scale_notify_start", {console: false, localize: true});
+        CztUtility.sendNotifyToChat({
+            title: "CZT.Hotel.success_scale_notify_start",
+            color: "blue"
+        })
     }
 
     async _onisDebug(event, target) {
@@ -285,7 +288,10 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             Crisis -= 1;
         }
         this.actor.update({ ['system.crisis']: Crisis });
-        ui.notifications.info("CZT.Hotel.CrisisUpCustom", {console: false, localize: true});
+        CztUtility.sendNotifyToChat({
+            title: "CZT.Hotel.CrisisUpCustom",
+            color: "yellow"
+        });
     }
 
     async _onSuccess_scale(event, target) {
@@ -294,7 +300,10 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
             SC -= 1;
         }
         this.actor.update({ ['system.success_scale']: SC });
-        ui.notifications.info("CZT.Hotel.success_scale_notify_mod", {console: false, localize: true});
+        CztUtility.sendNotifyToChat({
+            title: "CZT.Hotel.success_scale_notify_mod",
+            color: "yellow"
+        });
     }
 
     async _onDelEmp(event, target) {
@@ -326,7 +335,10 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
         if(crisis < 5) {
             crisis = crisis + 1;
             this.actor.update({['system.crisis']: crisis});
-            ui.notifications.warn("CZT.Hotel.CrisisUp", {console: false, localize: true, permanent: true});
+            CztUtility.sendNotifyToChat({
+                title: "CZT.Hotel.CrisisUp",
+                color: "pink"
+            });
         }
         const employees = foundry.utils.duplicate(this.document.system.employees);
         employees.forEach((actor_id) => {
@@ -335,7 +347,10 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
                 ['system.tags']: "",
                 ['system.moves_disabled']: []
             });
-        })
-        ui.notifications.success("CZT.Hotel.LunchBreak_notify", {console: false, localize: true, permanent: true});
+        });
+        CztUtility.sendNotifyToChat({
+            title: "CZT.Hotel.LunchBreak_notify",
+            color: "green"
+        });
     }
 }

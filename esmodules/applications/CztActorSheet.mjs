@@ -377,10 +377,16 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 if(success_scale < 4) {
                     success_scale = success_scale + 1;
                     grand_hotel.update({['system.success_scale']: success_scale});
-                    ui.notifications.error("CZT.Hotel.success_scale_notify", {console: false, localize: true, permanent: true});
+                    CztUtility.sendNotifyToChat({
+                        title: "CZT.Hotel.success_scale_notify",
+                        color: "red"
+                    })
                 }
                 if(success_scale >= 4) {
-                    ui.notifications.error("CZT.Hotel.success_scale_notify_end", {console: false, localize: true, permanent: true});
+                    CztUtility.sendNotifyToChat({
+                        title: "CZT.Hotel.success_scale_notify_end",
+                        color: "red"
+                    })
                 }
             }            
         }else if(total >= 7 && total <= 9) {
@@ -397,7 +403,10 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                 if(crisis < 5) {
                     crisis = crisis + 1;
                     grand_hotel.update({['system.crisis']: crisis});
-                    ui.notifications.warn("CZT.Hotel.CrisisUp", {console: false, localize: true, permanent: true});
+                    CztUtility.sendNotifyToChat({
+                        title: "CZT.Hotel.CrisisUp",
+                        color: "pink"
+                    })
                 }
             }
         }
