@@ -1,6 +1,6 @@
 # Grand Hotel
 
-Системя для НРИ Grand Hotel на [Foundry VTT v13+](https://foundryvtt.com/ "Что ещё за фаундри такой?") на русском языке. 
+Система для НРИ Grand Hotel на [Foundry VTT v13+](https://foundryvtt.com/ "Что ещё за фаундри такой?") на русском языке. 
 
 Пакет разработан под руководством авторов игры [Geese and Dragons](https://t.me/GrandLaHotel)
 
