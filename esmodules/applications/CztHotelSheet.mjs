@@ -213,6 +213,9 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
     _onRender(context, options) {
         super._onRender((context, options));
 
+        const PutCards = this.element.querySelectorAll(".hotel-PutCards");
+        PutCards.forEach((d) => d.addEventListener("click", this._putCards.bind(this)));
+
         const changeCrisis = this.element.querySelectorAll(".crisis-check");
         changeCrisis.forEach((d) => d.addEventListener("click", this._onCrisis.bind(this)));
 
@@ -255,6 +258,47 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
       return context;
     }
 
+    async _putCards(event, target) {
+        const hotel_id = this.document._id;
+        const employees = foundry.utils.duplicate(this.document.system.employees);
+        var con = [];
+        const sourceArray = game.settings.get(SYSTEM.id,'isTypeDeckCard');
+        if(sourceArray == 'comp') {
+            con = await game.packs.get(`${SYSTEM.id}.cards`).getDocuments();
+        }else{
+            con = await game.items.filter(e => e.type === "card");
+        }
+        const lines_len = con.length;
+        const text2 = game.i18n.localize("CZT.Card.ToPlayers");
+        const isSendChatCard = game.settings.get(SYSTEM.id,'isSendChatCard');
+        employees.forEach((emp_id) => {
+            var randInt = CztUtility.getRandomInt(0, lines_len);
+            var card = con[randInt];
+            var emp = game.actors.get(emp_id);
+            var emp_cards = foundry.utils.duplicate(emp.system.cards);
+            emp_cards.push({
+                id: foundry.utils.randomID(),
+                game_id: card._id,
+                source: sourceArray,
+                name: card.name,
+                description: card.system.description
+            });
+            emp.update({['system.cards']: emp_cards});
+            emp.render(true);
+
+            if(isSendChatCard){
+                var title = `${emp.name} ${text2} ${card.name}`;
+                CztUtility.sendNotifyToChat({
+                    title: title,
+                    color: "green",
+                    message: card.system.description
+                });
+            }
+        });
+
+        ui.notifications.info("CZT.Card.PushedCards", {localize: true});
+    }
+
     async _onSuccessScaleReset(event, target) {
         this.actor.update({ ['system.success_scale']: 0 });
         CztUtility.sendNotifyToChat({
@@ -264,11 +308,14 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
     }
 
     async _onisDebug(event, target) {
-        if(!SYSTEM.isDebug) { return; };
+        if(!game.settings.get(SYSTEM.id,'isSystemDebug')) { return; };
 
         game.actors.forEach((actor) => {
             if(ActorTypes.includes(actor.type)) {
-                actor.update({['system.grand_hotel']: ""})
+                actor.update({
+                    ['system.grand_hotel']: "",
+                    ['system.cards']: []
+                })
             }else if(actor.type == 'hotel'){
                 actor.update({ ['system.employees']: [] })
             }

@@ -1,0 +1,18 @@
+<section class="tab {{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<div class="czt-wrapper">
+  <h3>{{localize "CZT.Card.Deck"}}</h3>
+  {{#if cards}}
+  <div class="hero-cards-show">
+    {{#each cards as |card|}}
+      <div class="hero-cards-item">
+        <div class="hero-cards-item-title">{{card.name}}</div>
+        <div class="hero-cards-item-text">{{card.description}}</div>
+        <div class="hero-cards-item-button" data-num="{{card.id}}">{{localize "CZT.Card.PopCard"}}</div>
+      </div>
+    {{/each}}
+  </div>
+  {{else}}
+    {{localize "CZT.Card.DeckNo"}}
+  {{/if}}
+</div>
+</section>

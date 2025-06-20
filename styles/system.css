@@ -475,3 +475,32 @@ li.chat-message:has(.chat-notify-orange) {
 .czt-chat-notify .czt-chat-notify-message {
   font-size: 12px;
 }
+
+form.grand-hotel .hotel-PutCards {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+form.grand-hotel .hero-cards-show .hero-cards-item {
+  float: left;
+  width: 178px;
+  height: 240px;
+  background: url("../assets/card_prev.png") no-repeat;
+  background-size: 100% 100%;
+}
+form.grand-hotel .hero-cards-show .hero-cards-item .hero-cards-item-title {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 20px;
+}
+form.grand-hotel .hero-cards-show .hero-cards-item .hero-cards-item-text {
+  padding: 16px 24px 0px 25px;
+  font-size: var(--font-size-10);
+  text-align: center;
+}
+form.grand-hotel .hero-cards-show .hero-cards-item .hero-cards-item-button {
+  cursor: pointer;
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+}

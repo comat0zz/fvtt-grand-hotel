@@ -68,6 +68,9 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         hero: {
             template: `${SYSTEM.template_path}/sheets/actors/hero-sheet.hbs`
         },
+        cards: {
+            template: `${SYSTEM.template_path}/sheets/actors/hero-cards-sheet.hbs`
+        },
         moves: {
             template: `${SYSTEM.template_path}/sheets/actors/moves-list-uniq-sheet.hbs`
         },
@@ -109,6 +112,13 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
                     icon: '',
                     label: 'CZT.Actor.Navs.Hero',
                 },
+                cards: {
+                    cssClass: this.tabGroups.primary === 'cards' ? 'active' : '',
+                    group: 'primary',
+                    id: 'cards',
+                    icon: '',
+                    label: 'CZT.Card.DeckShort'
+                },
                 moves: {
                     cssClass: this.tabGroups.primary === 'moves' ? 'active' : '',
                     group: 'primary',
@@ -149,6 +159,8 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         const moves_contacts = this.document.system.moves_contacts;
         context.moves_contacts = game.actors.filter(actor => { return (ActorTypes.includes(actor.type) && moves_contacts.includes(actor._id))});
 
+        context.cards = this.document.system.cards;
+
         game.logger.log(context)
         return context
     }
@@ -159,6 +171,9 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
 
         const genContacts = this.element.querySelectorAll(".actor-contacts-gen");
         genContacts.forEach((d) => d.addEventListener("click", this._genContacts.bind(this)));
+
+        const delCards = this.element.querySelectorAll(".hero-cards-item-button");
+        delCards.forEach((d) => d.addEventListener("click", this._delCards.bind(this)));
     }
 
     /** @inheritdoc */
@@ -172,10 +187,17 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
         });
     }
 
+    async _delCards(event, target) {
+        const card_id = $(event.currentTarget).data("num");
+        const oldCards = foundry.utils.duplicate(this.document.system.cards);
+        const newCards = oldCards.filter(card => (card.id != card_id));
+        this.actor.update({['system.cards']: newCards});
+        ui.notifications.info("CZT.Card.DeletedCard", {localize: true});
+    }
+
     async _genContacts(event, target) {
         
         const con = await game.packs.get(`${SYSTEM.id}.contacts`).getDocument("bPHbD4WulW9BJ0vt");
-        console.log(con)
         const lines = con.collections.results._source;
         const lines_len = lines.length;
         let contacts = foundry.utils.duplicate(this.document.system.contacts);
@@ -267,6 +289,7 @@ export default class CztActorSheet extends api.HandlebarsApplicationMixin(sheets
             case 'hero':
             case 'moves':
             case 'notes':
+            case 'cards':
             case 'moveslist':
                 context.tab = context.tabs[partId];
                 break;

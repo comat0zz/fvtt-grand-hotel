@@ -29,7 +29,7 @@ export default class CztActor extends foundry.abstract.TypeDataModel {
         schema.moves_disabled = new fields.ArrayField(new fields.StringField());
         schema.moves_contacts = new fields.ArrayField(new fields.StringField());
 
-        schema.cards = new fields.ArrayField(new fields.StringField());
+        schema.cards = new fields.ArrayField(new fields.ObjectField());
 
         return schema;
     }
