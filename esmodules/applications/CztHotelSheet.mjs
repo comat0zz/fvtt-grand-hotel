@@ -111,7 +111,7 @@ export default class CztHotelSheet extends api.HandlebarsApplicationMixin(sheets
           employeesCount: Employees.length,
           leCadresCount: leCadresIds.length,
           leCadres: leCadres,
-          isDebug: SYSTEM.isDebug,
+          isDebug: game.settings.get(SYSTEM.id,'isSystemDebug'),
 
           tabs: {
                 hotel: {

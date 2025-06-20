@@ -16,9 +16,11 @@ import { handleSocketEvent } from "./socket.mjs";
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 Hooks.once("init", async function() {
+  registerSystemSettings();
+  
   globalThis[SYSTEM.id] = game[SYSTEM.id] = Object.assign(game.system, globalThis.SYSTEM);
 
-  game.logger = new CztUtility.Log(SYSTEM.isDebug);
+  game.logger = new CztUtility.Log(game.settings.get(SYSTEM.id,'isSystemDebug'));
   
   // Expose the system API
   game.system.api = {
@@ -39,7 +41,8 @@ Hooks.once("init", async function() {
 
   CONFIG.Item.documentClass = documents.CztMove;
   CONFIG.Item.dataModels = {
-    move: models.CztMove
+    move: models.CztMove,
+    card: models.CztCard
   }
 
   foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
@@ -67,12 +70,19 @@ Hooks.once("init", async function() {
     types: ["move"], 
     makeDefault: true,
     label: "TYPES.Item.move"
-  })
+  });
+
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet)
+  foundry.documents.collections.Items.registerSheet(SYSTEM.id, applications.CztCardSheet, { 
+    types: ["card"], 
+    makeDefault: true,
+    label: "TYPES.Item.card"
+  });
 
   // Activate socket handler
   game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
 
-  registerSystemSettings();
+  
   initializeHandlebars();
 
   game.logger.info(`${SYSTEM.id} | System Initialized`);

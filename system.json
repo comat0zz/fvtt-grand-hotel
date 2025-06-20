@@ -24,7 +24,8 @@
       "hotel": { "htmlFields": ["description", "notes"] }
     },
     "Item": {
-      "move": { "htmlFields": ["description", "examples", "results.on_10", "results.on_79", "results.on_6"] }
+      "move": { "htmlFields": ["description", "examples", "results.on_10", "results.on_79", "results.on_6"] },
+      "card": { "htmlFields": ["notes"] }
     }
   },
   "esmodules": [
@@ -39,6 +40,19 @@
       "label": "Ходы",
       "system": "grand-hotel",
       "path": "packs/moves",
+      "type": "Item",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "cards",
+      "label": "Колода карт Бруно",
+      "system": "grand-hotel",
+      "path": "packs/cards",
       "type": "Item",
       "private": false,
       "flags": {},
